@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@theme{
+    --color-main-orage: #f97316;
+    --color-main-blue: #22d3ee;
+    --color-main-green: #22c55e;
+    --color-background-dark: #121827;
+    --color-background-medium: #1f2937;
+    --color-background-medium2: #374151;
+    --color-background-orange: #f973162f;
+    --color-background-blue: #22d3ee2f;
+    --color-background-green: #22c55e2f;
+    --color-background-transparent: #0000;
+    --color-hover-white: #0002;
+    --color-hover-botton: #5556;
+}
+
+
+body {
+    @apply bg-background-medium text-white;
+}
