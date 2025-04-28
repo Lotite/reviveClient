@@ -1,0 +1,16 @@
+@theme {
+    --font-family-Title: 'Montserrat', sans-serif;
+}
+
+.title {
+    font-family: var(--font-family-Title);
+    font-size: 30px;
+    font-weight: 700; 
+}
+
+.font-Body {
+    font-family: var(--font-family-Body);
+    font-size: 16px;
+    font-weight: 400; 
+}
+

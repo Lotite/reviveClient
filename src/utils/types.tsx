@@ -1,0 +1,45 @@
+export type Tinput = {
+    id?: string;
+    label?: string;
+    placeholder?: string;
+    value?: string;
+    error?: string;
+    type?: "text" | "email" | "password" | "number" | "tel" | "url";
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
+    className?: string;
+    classInput?: string;
+    classLabel?: string;
+    classError?: string;
+    onlyRead?: boolean;
+    ref?: React.RefObject<HTMLInputElement | null>;
+}
+
+export type TcheckBox = {
+    label?: string;
+    id?: string;
+    checked?: boolean;
+    children?: React.ReactNode;
+    ref?: React.RefObject<HTMLInputElement | null>;
+    onChange?: (checked: boolean) => void;
+    error?: string;
+}
+
+export type Tbutton = {
+    color?: TtailwindColors["background"];
+    children?: React.ReactNode;
+    text?: string;
+    onclick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    className?: string;
+    type?: "button" | "submit" | "reset";
+    disabled?: boolean;
+}
+
+
+
+export type TtailwindColors = {
+    text: "blue" | "orange" | "green" | "medium" | "white" |  "success" | "error" | "warning" | "info";
+    background: "blue" | "orange" | "green" | "dark" | "medium" | "medium2";
+};
+
+

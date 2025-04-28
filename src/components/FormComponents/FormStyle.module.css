@@ -1,0 +1,13 @@
+@import "../../index.css";
+
+
+.ContainerForm{
+    @apply flex flex-col  bg-background-medium mx-auto mt-5 rounded-lg shadow-md py-6 px-7 ;
+    /* propiedades responsivas */
+    @apply max-w-130  w-9/10 min-w-10   ; 
+}
+
+
+.inputFrom {
+    @apply  h-10 w-full bg-background-medium2  rounded-lg px-2 placeholder:text-medium outline-none focus:outline-none focus:border-1 focus:border-main-orange transition-colors duration-300 ease-in-out
+}

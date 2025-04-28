@@ -1,0 +1,97 @@
+@theme{
+    --color-main-orange: #f97316;
+    --color-main-blue: #22d3ee;
+    --color-main-green: #64DD17;
+    --color-medium: #9ca3af;
+    --color-medium2: #ccc3cf;
+    --color-success: #22c55e;
+    --color-error: #ef4444;
+    --color-warning: #f59e0b;
+    --color-info: #3b82f6;
+}
+
+@theme{
+    --color-text-orange: #f97316;
+    --color-text-blue: #22d3ee;
+    --color-text-green: #64DD17;
+    --color-text-medium: #9ca3af;
+    --color-text-medium2: #ccc3cf;
+    --color-text-success: #22c55e;
+    --color-text-error: #ef4444;
+    --color-text-warning: #f59e0b;
+    --color-text-info: #3b82f6;
+}
+
+@theme{
+    --color-text-hover-orange: #fca25d; 
+    --color-text-hover-blue: #60a5fa; 
+    --color-text-hover-green: #86efac;
+    --color-text-hover-medium: #cbd5e1; 
+    --color-text-hover-medium2: #d8bfd8;
+    --color-text-hover-success: #4ade80;
+    --color-text-hover-error: #f87171;
+    --color-text-hover-warning: #fbbf24; 
+    --color-text-hover-info: #93c5fd; 
+    }
+
+    @theme{
+        --color-text-active-orange: #c05621;
+        --color-text-active-blue: #2563eb; 
+        --color-text-active-green: #22c55e; 
+        --color-text-active-medium: #6b7280; 
+        --color-text-active-medium2: #a78bfa;
+        --color-text-active-success: #16a34a; 
+        --color-text-active-error: #dc2626; 
+        --color-text-active-warning: #b45309; 
+        --color-text-active-info: #2563eb; 
+        }
+
+
+
+
+@theme{
+    --color-main-orange: #f97316;
+    --color-main-blue: #22d3ee;
+    --color-main-green: #64DD17;
+    --color-medium: #9ca3af;
+    --color-medium2: #ccc3cf;
+    --color-success: #22c55e;
+    --color-error: #ef4444;
+    --color-warning: #f59e0b;
+    --color-info: #3b82f6;
+}
+
+
+
+@theme{
+    --color-background-orange: #f97316;
+    --color-background-blue: #22d3ee;
+    --color-background-green: #64DD17;
+    --color-background-dark: #121827;
+    --color-background-medium: #1f2937;
+    --color-background-medium2: #374151;
+    --color-background-transparent: #0000;
+}
+
+@theme{
+    --color-background-hover-white: #0002;
+    --color-background-hover-botton: #5556;
+    --color-background-hover-orange: #f97316cf;
+    --color-background-hover-blue: #22d3eecf;
+    --color-background-hover-green: #22c55ecf;
+    --color-background-hover-dark: #121827cf;
+    --color-background-hover-medium: #1f2937cf;
+    --color-background-hover-medium2: #374151cf;
+}
+
+@theme{
+    --color-background-active-white: #0006;
+    --color-background-active-botton: #999a;
+    --color-background-active-orange: #c96a2f;
+    --color-background-active-blue: #1799b3;
+    --color-background-active-green: #1f9a45;
+    --color-background-active-dark: #141b26;
+    --color-background-active-medium: #202b3d;
+    --color-background-active-medium2: #3a4a66;
+}
+
