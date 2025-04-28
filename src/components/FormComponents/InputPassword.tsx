@@ -21,10 +21,5 @@ export default function InputPassword(props:Omit<Tinput, "type" |"readOnly">) {
         setPassVisible(!passVisible);
     };
     
-    return (
-        <div className="relative">
-            <Input {...props} id={id} type={ passVisible ? "text" : "password"}/>
-            { passVisible ? <AiOutlineEyeInvisible className={classIcon} onClick={onClick}/> : <AiOutlineEye className={classIcon} onClick={onClick}/>}
-        </div>
-    )
-}
+    return <Input {...props} id={id} type={ passVisible ? "text" : "password"} children={passVisible ? <AiOutlineEyeInvisible className={classIcon} onClick={onClick}/> : <AiOutlineEye className={classIcon} onClick={onClick}/>}/>
+    }

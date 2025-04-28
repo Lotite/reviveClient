@@ -33,6 +33,7 @@ export default function Input(props: Tinput) {
                 ref={props.ref}
                 onBlur={props.onBlur}
             />
+            {props.children}
             {props.error && <p className={classError}>{props.error}</p>}
        </div>
     )

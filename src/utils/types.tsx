@@ -13,6 +13,7 @@ export type Tinput = {
     classError?: string;
     onlyRead?: boolean;
     ref?: React.RefObject<HTMLInputElement | null>;
+    children?: React.ReactNode;
 }
 
 export type TcheckBox = {
