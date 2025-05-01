@@ -1,4 +1,8 @@
+import { BsGoogle } from "react-icons/bs";
+import { Button } from "../baseComponents/Button/Button";
+import HR from "../baseComponents/hr/HR";
 import style from "./FormStyle.module.css";
+import { FaFacebookF } from "react-icons/fa";
 
 export default function Form({ className, children, validator }: { className?: string; children?: React.ReactNode; validator?: () => boolean }) {
 
@@ -14,6 +18,17 @@ export default function Form({ className, children, validator }: { className?: s
     return (
         <form className={classContainer} onSubmit={handleSubmit} action="/hola">
             {children}
+            <HR text="O continua con" textColor="green"/>
+            <div className="flex justify-between">
+            <Button color="medium2" className="flex justify-center items-center">
+                <BsGoogle className="mx-1"/>
+                Google
+            </Button>
+            <Button color="medium2" className="flex justify-center items-center">
+                <FaFacebookF />
+                Facebook
+            </Button>
+            </div>
         </form>
     )
 }

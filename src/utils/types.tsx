@@ -4,7 +4,7 @@ export type Tinput = {
     placeholder?: string;
     value?: string;
     error?: string;
-    type?: "text" | "email" | "password" | "number" | "tel" | "url";
+    type?: ToptionsInput;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
     onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
     className?: string;
@@ -36,6 +36,7 @@ export type Tbutton = {
     disabled?: boolean;
 }
 
+export type ToptionsInput = "text" | "email" | "password" | "number" | "tel" | "url"
 
 
 export type TtailwindColors = {

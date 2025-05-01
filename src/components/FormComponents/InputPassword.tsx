@@ -5,7 +5,7 @@ import Input from "./Input";
 
 export default function InputPassword(props:Omit<Tinput, "type" |"readOnly">) {
     const [passVisible, setPassVisible] = useState<boolean>(false);
-    const classIcon = "absolute bottom-8 right-3 text-2xl text-medium";
+    const classIcon = "absolute top-8 right-3 text-2xl text-medium";
     const id = props.id ? props.id :useId();
 
     useEffect(() => {
@@ -20,6 +20,11 @@ export default function InputPassword(props:Omit<Tinput, "type" |"readOnly">) {
     const onClick = () =>{
         setPassVisible(!passVisible);
     };
+    const selectedIcon = passVisible ? <AiOutlineEyeInvisible className={classIcon} onClick={onClick}/> : <AiOutlineEye className={classIcon} onClick={onClick}/>;
+    const children = (<>
+        {selectedIcon}
+        {props.children}
+    </>)
     
-    return <Input {...props} id={id} type={ passVisible ? "text" : "password"} children={passVisible ? <AiOutlineEyeInvisible className={classIcon} onClick={onClick}/> : <AiOutlineEye className={classIcon} onClick={onClick}/>}/>
+    return <Input {...props} id={id} type={ passVisible ? "text" : "password"} children={children}/>
     }

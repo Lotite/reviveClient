@@ -6,7 +6,7 @@ export default function Link({children,href,className,color }:{children:React.Re
     return(
         <a 
         href={href} 
-        className={`${className} ${selectedColors}`}
+        className={`${className} ${selectedColors} hover:underline`}
         onClick={(e) => {e.stopPropagation();}}
         >
             {children}

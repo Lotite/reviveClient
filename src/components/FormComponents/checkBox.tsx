@@ -25,7 +25,7 @@ const CheckBox = ((props:TcheckBox) => {
       />
       <label
         htmlFor={props.id || "checked-checkbox"}
-        className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+        className="ms-2 text-sm font-medium text-gray-900 dark:text-medium"
       >
         {props.children ? props.children :   props.label }
       </label>
