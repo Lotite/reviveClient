@@ -4,7 +4,31 @@
 
 
 body {
-    @apply bg-background-dark text-white;
+    @apply bg-background-dark text-white flex flex-col;
+}
+
+#root{
+    max-width: 100vw;
+    max-height: 100vh;
+    overflow: hidden;
+}
+
+main {
+
+    @apply max-h-[91vh] overflow-y-auto p-[10px]
+    [&::-webkit-scrollbar]:w-2
+    [&::-webkit-scrollbar-track]:rounded-full
+    [&::-webkit-scrollbar-track]:bg-gray-100
+    [&::-webkit-scrollbar-thumb]:rounded-full
+    [&::-webkit-scrollbar-thumb]:bg-gray-300
+    dark:[&::-webkit-scrollbar-track]:bg-neutral-700
+    dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500;
+  }
+  
+
+main > * {
+    max-height: none !important;
+    height: max-content !important;
 }
 
 input[type="password"]::-ms-reveal {

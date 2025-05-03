@@ -1,0 +1,154 @@
+.glitch {
+    position: relative;
+    color: var(--glitch-color, white);
+    font-size: var(--glitch-font-size, 3em);
+    text-align: center;
+    text-transform: uppercase;
+    transition: opacity 1s ease-in-out;
+    animation: glitch-animation var(--glitch-animation-duration, 1s) infinite linear alternate-reverse;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch::before {
+    left: -2px;
+    text-shadow: 2px 0 #ff3cff, 4px 0 #ff00f9;
+    animation: glitch-animation-before calc(var(--glitch-animation-duration, 1s) * 1.5) infinite linear alternate-reverse;
+}
+
+.glitch::after {
+    left: 2px;
+    text-shadow: -2px 0 #00eaff, -4px 0 #00baff;
+    animation: glitch-animation-after calc(var(--glitch-animation-duration, 1s) * 2) infinite linear alternate-reverse;
+}
+
+@keyframes glitch-animation {
+    0% {
+        transform: translate(0);
+    }
+    20% {
+        transform: translate(-3px, 3px);
+    }
+    40% {
+        transform: translate(-3px, -3px);
+    }
+    60% {
+        transform: translate(3px, 3px);
+    }
+    80% {
+        transform: translate(3px, -3px);
+    }
+    to {
+        transform: translate(0);
+    }
+}
+
+@keyframes glitch-animation-before {
+    0% {
+        transform: translate(0);
+    }
+    10% {
+        transform: translate(-3px, -3px);
+    }
+    20% {
+        transform: translate(-3px, 3px);
+    }
+    30% {
+        transform: translate(3px, -3px);
+    }
+    40% {
+        transform: translate(3px, 3px);
+    }
+    50% {
+        transform: translate(-3px, -3px);
+    }
+    60% {
+        transform: translate(-3px, 3px);
+    }
+    70% {
+        transform: translate(3px, -3px);
+    }
+    80% {
+        transform: translate(3px, 3px);
+    }
+    90% {
+        transform: translate(-3px, -3px);
+    }
+    to {
+        transform: translate(0);
+    }
+}
+
+@keyframes glitch-animation-after {
+    0% {
+        transform: translate(0);
+    }
+    5% {
+        transform: translate(-2px, -2px);
+    }
+    10% {
+        transform: translate(-2px, 2px);
+    }
+    15% {
+        transform: translate(2px, -2px);
+    }
+    20% {
+        transform: translate(2px, 2px);
+    }
+    25% {
+        transform: translate(-2px, -2px);
+    }
+    30% {
+        transform: translate(-2px, 2px);
+    }
+    35% {
+        transform: translate(2px, -2px);
+    }
+    40% {
+        transform: translate(2px, 2px);
+    }
+    45% {
+        transform: translate(-2px, -2px);
+    }
+    50% {
+        transform: translate(2px, 2px);
+    }
+    55% {
+        transform: translate(-2px, -2px);
+    }
+    60% {
+        transform: translate(-2px, 2px);
+    }
+    65% {
+        transform: translate(2px, -2px);
+    }
+    70% {
+        transform: translate(2px, 2px);
+    }
+    75% {
+        transform: translate(-2px, -2px);
+    }
+    80% {
+        transform: translate(-2px, 2px);
+    }
+    85% {
+        transform: translate(2px, -2px);
+    }
+    90% {
+        transform: translate(2px, 2px);
+    }
+    95% {
+        transform: translate(-2px, -2px);
+    }
+    to {
+        transform: translate(0);
+    }
+}

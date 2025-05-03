@@ -31,3 +31,11 @@ export function validateInput(input: HTMLInputElement, type?: ToptionsInput) {
 
   return validator(value);
 }
+
+export function randomInt(num1:number,num2?:number):number{
+  if(num2==undefined){
+    return Math.floor(Math.random() *  num1)
+  }else{
+    return Math.floor(Math.random() * (num2 - num1 + 1)) + num1
+  }
+}

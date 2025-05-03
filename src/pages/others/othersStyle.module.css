@@ -1,0 +1,73 @@
+@import "./../../index.css";
+
+.tvContainer {
+  @apply relative mx-auto w-full max-w-2xl mt-5 max-h-screen overflow-auto;
+}
+
+.tvBox{
+  @apply bg-background-medium2 rounded-lg p-6 shadow-xl;
+}
+
+.tvHeader{
+  @apply flex justify-between items-center mb-4;
+}
+
+.tvTitle{
+  @apply text-text-medium text-sm font-bold tracking-widest;
+}
+
+.tvScreen{
+  @apply relative flex aspect-video rounded-xl overflow-hidden border-8 bg-white border-background-dark shadow-inner;
+  will-change: auto;
+  box-shadow: rgba(255, 255, 255, 0.227) 0px 0px 16.3579px;
+}
+
+.tvSelectedCanal{
+  @apply absolute top-4 right-4 bg-background-dark  px-2 py-1 rounded text-white text-sm font-mono;
+}
+
+.tvControler{
+  @apply mt-4 bg-background-dark p-3 rounded-lg;
+}
+
+.tvControlerRow{
+  @apply flex justify-between my-1;
+}
+
+.tvCanalButton{
+  @apply bg-background-medium2 no-underline hover:cursor-pointer hover:bg-background-medium px-3 rounded text-sm text-text-medium flex items-center py-2  ; 
+}
+
+.tvPowerButton{
+  @apply hover:cursor-pointer transition-transform active:scale-90 rounded-full size-8 scale-100 flex items-center justify-center  text-white p-0;
+}
+
+.tvSoport{
+  @apply h-6 w-32 bg-background-medium2 mx-auto rounded-b-lg;
+}
+
+@keyframes fadeOpacity {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fadeOpacityAnimation {
+  animation: fadeOpacity 500ms ease-in-out infinite;
+}
+
+.wideText {
+  letter-spacing: 0.3em;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.opacityAnimation {
+  animation: fadeOpacity 1s ease-in-out infinite;
+}
