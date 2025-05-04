@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Header from "./components/header/Header"
-import RegisterPage from "./pages/auth/Register"
+import RegisterPage from "./pages/auth/register"
 import Login from "./pages/auth/Login"
 import P404 from "./pages/others/P404"
 import Home from "./pages/index/Home"

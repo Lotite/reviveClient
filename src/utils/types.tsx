@@ -44,4 +44,13 @@ export type TtailwindColors = {
     background: "blue" | "orange" | "green" | "dark" | "medium" | "medium2";
 };
 
+export type Tmedia = {
+    id:number,
+    title:string,
+    image: string,
+    description: string,
+    reseña:number,
+    date:Date ,
+    number:number
+}
 
