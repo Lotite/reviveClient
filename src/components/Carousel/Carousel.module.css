@@ -1,0 +1,13 @@
+@import "./../../index.css";
+
+.container{
+    height: 500px !important;
+    @apply w-full  bg-red-600 overflow-hidden relative;
+}
+
+.imageContainer{
+    @apply w-full h-full bg-blue-600 absolute  transition pt-30 pl-15;
+    transition-duration: 1s;
+}
+
+

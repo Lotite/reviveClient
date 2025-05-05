@@ -17,7 +17,7 @@
 }
 
 .tvScreen{
-  @apply relative flex aspect-video rounded-xl overflow-hidden border-8 bg-white border-background-dark shadow-inner;
+  @apply relative z-10 flex aspect-video rounded-xl overflow-hidden border-8 bg-white border-background-dark shadow-inner;
   will-change: auto;
   box-shadow: rgba(255, 255, 255, 0.227) 0px 0px 16.3579px;
 }

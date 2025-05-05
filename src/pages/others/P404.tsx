@@ -54,12 +54,12 @@ export default function P404() {
           <div
             className={style.tvScreen}
           >
-            <img src="https://www.fronterad.com/wp-content/uploads/2020/06/TV_noise_128c.gif" className={`absolute w-full h-full opacity-${tvPower ? 100 : 0} ${animateImage ? style.fadeOpacityAnimation : ""}`} />
-            <div className={`m-auto flex flex-col opacity-${tvPower ? 100 : 0} ${animateImage ? style.fadeOpacityAnimation : ""}`}>
+            <img src="https://www.fronterad.com/wp-content/uploads/2020/06/TV_noise_128c.gif" className={`absolute w-full h-full ${animateImage ? style.fadeOpacityAnimation : ""}`} style={{opacity: tvPower ? 1 : 0}} />
+            <div className={`m-auto flex flex-col ${animateImage ? style.fadeOpacityAnimation : ""}`} style={{opacity: tvPower ? 1 : 0}}>
             <GlitchText text="404" fontSize="6em" className="mx-auto" />
             <p className={`${style.wideText} text-black text-xl sm:text-2xl ${style.opacityAnimation}`}>Señal no encontrada</p>
             </div>
-            <div className={`w-full h-full bg-black opacity-${tvPower ? 0 : 100} transition-opacity duration-400 ease-in-out absolute`}></div>
+            <div className={`w-full h-full bg-black transition-opacity duration-400 ease-in-out absolute`} style={{opacity: tvPower ? 0 : 1}}></div>
             <div className={style.tvSelectedCanal}>
               CH {canal}
             </div>

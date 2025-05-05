@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @import "./config/styleColors.css";
 @import "./config/styleFont.css";
-
+@import "./config/styleClass.css";
 
 body {
     @apply bg-background-dark text-white flex flex-col;
@@ -15,14 +15,14 @@ body {
 
 main {
 
-    @apply max-h-[91vh] overflow-y-auto p-[10px]
+    @apply max-h-[91vh] overflow-y-auto 
     [&::-webkit-scrollbar]:w-2
     [&::-webkit-scrollbar-track]:rounded-full
     [&::-webkit-scrollbar-track]:bg-gray-100
     [&::-webkit-scrollbar-thumb]:rounded-full
     [&::-webkit-scrollbar-thumb]:bg-gray-300
     dark:[&::-webkit-scrollbar-track]:bg-neutral-700
-    dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500;
+    dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500 relative;
   }
   
 
