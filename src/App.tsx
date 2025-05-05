@@ -4,6 +4,7 @@ import RegisterPage from "./pages/auth/register"
 import Login from "./pages/auth/Login"
 import P404 from "./pages/others/P404"
 import Home from "./pages/index/Home"
+import Pruebas from "./pages/others/pruebas"
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
             <Route path="/"         element={<Home/>}/>
             <Route path="/login"    element={<Login/>}/>
             <Route path="/register" element={<RegisterPage />} />
+            <Route path="/pruebas" element={<Pruebas/>} />
             <Route path="/*"        element={<P404/>} />
           </Routes>
         </main>

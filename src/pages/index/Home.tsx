@@ -12,7 +12,8 @@ const medias : Array<Tmedia> = [
         description: "Description 1",
         reseña: 5,
         date: new Date("2023-01-01"),
-        number: 1
+        number: 1,
+        type: "movie"
     },
     {
         id: 2,
@@ -21,7 +22,8 @@ const medias : Array<Tmedia> = [
         description: "Description 2",
         reseña: 5,
         date: new Date("2023-01-02"),
-        number: 2
+        number: 2,
+        type: "movie"
     },
     {
         id: 3,
@@ -30,7 +32,8 @@ const medias : Array<Tmedia> = [
         description: "Description 3",
         reseña: 5,
         date: new Date("2023-01-03"),
-        number: 3
+        number: 3,
+        type: "movie"
     },
     {
         id: 4,
@@ -39,7 +42,8 @@ const medias : Array<Tmedia> = [
         description: "Description 4",
         reseña: 5,
         date: new Date("2023-01-04"),
-        number: 4
+        number: 4,
+        type: "movie"
     },
     {
         id: 5,
@@ -48,7 +52,8 @@ const medias : Array<Tmedia> = [
         description: "Description 5",
         reseña: 5,
         date: new Date("2023-01-05"),
-        number: 5
+        number: 5,
+        type: "movie"
     },
     {
         id: 6,
@@ -57,7 +62,8 @@ const medias : Array<Tmedia> = [
         description: "Description 6",
         reseña: 5,
         date: new Date("2023-01-06"),
-        number: 6
+        number: 6,
+        type: "movie"
     },
     {
         id: 7,
@@ -66,7 +72,8 @@ const medias : Array<Tmedia> = [
         description: "Description 7",
         reseña: 5,
         date: new Date("2023-01-07"),
-        number: 7
+        number: 7,
+        type: "movie"
     },
     {
         id: 8,
@@ -75,7 +82,8 @@ const medias : Array<Tmedia> = [
         description: "Description 8",
         reseña: 5,
         date: new Date("2023-01-08"),
-        number: 8
+        number: 8,
+        type: "movie"
     },
     {
         id: 9,
@@ -84,7 +92,8 @@ const medias : Array<Tmedia> = [
         description: "Description 9",
         reseña: 5,
         date: new Date("2023-01-09"),
-        number: 9
+        number: 9,
+        type: "movie"
     },
     {
         id: 10,
@@ -93,7 +102,8 @@ const medias : Array<Tmedia> = [
         description: "Description 10",
         reseña: 5,
         date: new Date("2023-01-10"),
-        number: 10
+        number: 10,
+        type: "movie"
     }
 ];
 

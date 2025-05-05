@@ -51,6 +51,7 @@ export type Tmedia = {
     description: string,
     reseña:number,
     date:Date ,
-    number:number
+    number:number,
+    type:"movie" | "serie" | "season" | "episodie",
 }
 

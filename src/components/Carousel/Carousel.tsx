@@ -6,28 +6,21 @@ import { AiFillStar } from "react-icons/ai";
 import style from "./Carousel.module.css";
 import { Button } from "../baseComponents/Button/Button";
 import { Tmedia } from "../../utils/types";
-import { useState, useRef } from "react";
+import { useState} from "react";
 import { setBackgroundColor } from "../../utils/functions";
 
 export default function Carousel({medias}:{medias:Array<Tmedia>}){
     const [position,setPosition] = useState<number>(0);
-    const animationTimeout = useRef<number | null>(null);
 
     function changePosition(pos=1){
         const count = medias.length ;
         const newPos = (position + pos + count) % count;
-        setPosition(newPos);
+        setImage(newPos);
     }
 
     function setImage(pos:number){
-        if(animationTimeout.current){
-            clearTimeout(animationTimeout.current);
-        }
         if(pos !== position){
-            changePosition(pos > position ? 1 : -1);
-            animationTimeout.current = setTimeout(() => {
-                setImage(pos);
-            }, 900);
+            setPosition(pos);
         }
     }
 
@@ -63,7 +56,7 @@ export default function Carousel({medias}:{medias:Array<Tmedia>}){
     function selector(pos:number){
         const isActive = pos === position;
         const widthClass = isActive ? "w-6" : "w-2";
-        return( <Button className={`${widthClass} transition-all h-2 rounded-full ${style.selector}`} color={isActive ? "orange" : "medium2"} onClick={() => setImage(pos)} />)
+        return( <Button className={`${widthClass} transition-all h-2 rounded-full ${style.selector}`} color={isActive ? "orange" : "medium2"} onclick={() => setImage(pos)} />)
     }
 
     return(<div className={style.container}>

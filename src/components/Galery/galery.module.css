@@ -1,0 +1,8 @@
+@import "../../index.css";
+.container{
+    background-image: url("https://picsum.photos/360/640");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    @apply w-36 h-64 rounded-lg overflow-hidden;
+}
