@@ -1,8 +1,104 @@
 import Carousel from "../../components/Carousel/Carousel";
+import { Tmedia } from "../../utils/types";
 
 export default function Home(){
+
+
+const medias : Array<Tmedia> = [
+    {
+        id: 1,
+        title: "Media 1",
+        image: "https://picsum.photos/1000/400",
+        description: "Description 1",
+        reseña: 5,
+        date: new Date("2023-01-01"),
+        number: 1
+    },
+    {
+        id: 2,
+        title: "Media 2",
+        image: "https://picsum.photos/1000/401",
+        description: "Description 2",
+        reseña: 5,
+        date: new Date("2023-01-02"),
+        number: 2
+    },
+    {
+        id: 3,
+        title: "Media 3",
+        image: "https://picsum.photos/1000/402",
+        description: "Description 3",
+        reseña: 5,
+        date: new Date("2023-01-03"),
+        number: 3
+    },
+    {
+        id: 4,
+        title: "Media 4",
+        image: "https://picsum.photos/1000/403",
+        description: "Description 4",
+        reseña: 5,
+        date: new Date("2023-01-04"),
+        number: 4
+    },
+    {
+        id: 5,
+        title: "Media 5",
+        image: "https://picsum.photos/1000/404",
+        description: "Description 5",
+        reseña: 5,
+        date: new Date("2023-01-05"),
+        number: 5
+    },
+    {
+        id: 6,
+        title: "Media 6",
+        image: "https://picsum.photos/1000/405",
+        description: "Description 6",
+        reseña: 5,
+        date: new Date("2023-01-06"),
+        number: 6
+    },
+    {
+        id: 7,
+        title: "Media 7",
+        image: "https://picsum.photos/1000/406",
+        description: "Description 7",
+        reseña: 5,
+        date: new Date("2023-01-07"),
+        number: 7
+    },
+    {
+        id: 8,
+        title: "Media 8",
+        image: "https://picsum.photos/1000/407",
+        description: "Description 8",
+        reseña: 5,
+        date: new Date("2023-01-08"),
+        number: 8
+    },
+    {
+        id: 9,
+        title: "Media 9",
+        image: "https://picsum.photos/1000/408",
+        description: "Description 9",
+        reseña: 5,
+        date: new Date("2023-01-09"),
+        number: 9
+    },
+    {
+        id: 10,
+        title: "Media 10",
+        image: "https://picsum.photos/1000/409",
+        description: "Description 10",
+        reseña: 5,
+        date: new Date("2023-01-10"),
+        number: 10
+    }
+];
+
     return(
-        <Carousel/>
+        <Carousel medias={medias} />
         )
 }
 

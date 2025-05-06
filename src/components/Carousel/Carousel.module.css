@@ -2,12 +2,21 @@
 
 .container{
     height: 500px !important;
-    @apply w-full  bg-red-600 overflow-hidden relative;
+    @apply w-full   overflow-hidden relative;
 }
 
 .imageContainer{
-    @apply w-full h-full bg-blue-600 absolute  transition pt-30 pl-15;
     transition-duration: 1s;
+    @apply  w-full h-full  transition sm:pt-40 pt-60 pl-15;
+}
+
+.imagesContainer{
+    
+   @apply flex min-h-full;
 }
 
 
+.selector{
+    transition: all ease 600ms;
+    @apply h-2 rounded-full ;
+}
