@@ -1,8 +1,22 @@
 @import "../../index.css";
+
+
 .container{
     background-image: url("https://picsum.photos/360/640");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    @apply w-36 h-64 rounded-lg overflow-hidden;
+    @apply relative hover:scale-110 my-4 transition-transform rounded-lg overflow-hidden cursor-pointer;
+}
+
+.titleGalery{
+    margin-bottom:5px !important;
+    padding:0 !important;
+    @apply text-xl  font-bold mb-4;
+}
+
+.bg{
+    
+    @apply w-full h-full relative m-0 bg-gradient-to-b from-[#0003] from-50% to-black;
+    @apply opacity-0 hover:opacity-100 transition-opacity ;
 }

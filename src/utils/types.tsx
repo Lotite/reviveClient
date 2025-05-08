@@ -55,3 +55,10 @@ export type Tmedia = {
     type:"movie" | "serie" | "season" | "episodie",
 }
 
+export type Tdialog = {
+    className? : string,
+    children? : React.ReactNode ,
+    onClose? : CallableFunction,
+    onOpen? : CallableFunction,
+    display ? : "flex" | "hidden"
+}

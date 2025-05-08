@@ -39,3 +39,13 @@ export function randomInt(num1:number,num2?:number):number{
     return Math.floor(Math.random() * (num2 - num1 + 1)) + num1
   }
 }
+
+export function isDesktopDevice() {
+  if (typeof navigator === "undefined") return true; // default to desktop if no navigator
+  const ua = navigator.userAgent || navigator.vendor;
+  // Check for mobile device keywords in user agent
+  if (/android|iphone|ipad|ipod|opera mini|iemobile|mobile/i.test(ua)) {
+    return false;
+  }
+  return true;
+}
