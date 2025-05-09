@@ -1,14 +1,6 @@
-import { CiClock2 } from "react-icons/ci"; 
-import { AiOutlineCalendar } from "react-icons/ai"; 
-import { SlBadge } from "react-icons/sl"; 
-import { AiOutlinePlus } from "react-icons/ai";
-import { BiPlay } from "react-icons/bi";
-import { AiFillStar } from "react-icons/ai";
 import { useState } from "react";
-import Dialog from "../../components/Dialog/Dialog";
 import Galery from "../../components/Galery/Galery";
 import { Tmedia } from "../../utils/types";
-import { Button } from "../../components/baseComponents/Button/Button";
 import DialogGalery from "../../components/Galery/dialogGalery";
 
 export default function Pruebas() {
