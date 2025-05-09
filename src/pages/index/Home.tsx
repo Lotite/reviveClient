@@ -1,115 +1,119 @@
 import Carousel from "../../components/Carousel/Carousel";
 import { Tmedia } from "../../utils/types";
 
-export default function Home(){
+export default function Home() {
+  const medias: Array<Tmedia> = [
+    {
+      id: 1,
+      title: "Media 1",
+      portada: "https://picsum.photos/400/1001",
+      banner: "https://picsum.photos/1000/401",
+      description: "Description 1",
+      reseña: 5,
+      date: new Date("2023-01-01"),
+      number: 1,
+      type: "movie",
+    },
+    {
+      id: 2,
+      title: "Media 2",
+      portada: "https://picsum.photos/400/1002",
+      banner: "https://picsum.photos/1000/402",
+      description: "Description 2",
+      reseña: 5,
+      date: new Date("2023-01-02"),
+      number: 2,
+      type: "movie",
+    },
+    {
+      id: 3,
+      title: "Media 3",
+      portada: "https://picsum.photos/400/1003",
+      banner: "https://picsum.photos/1000/403",
+      description: "Description 3",
+      reseña: 5,
+      date: new Date("2023-01-03"),
+      number: 3,
+      type: "movie",
+    },
+    {
+      id: 4,
+      title: "Media 4",
+      portada: "https://picsum.photos/400/1004",
+      banner: "https://picsum.photos/1000/404",
+      description: "Description 4",
+      reseña: 5,
+      date: new Date("2023-01-04"),
+      number: 4,
+      type: "movie",
+    },
+    {
+      id: 5,
+      title: "Media 5",
+      portada: "https://picsum.photos/400/1005",
+      banner: "https://picsum.photos/1000/405",
+      description: "Description 5",
+      reseña: 5,
+      date: new Date("2023-01-05"),
+      number: 5,
+      type: "movie",
+    },
+    {
+      id: 6,
+      title: "Media 6",
+      portada: "https://picsum.photos/400/1006",
+      banner: "https://picsum.photos/1000/406",
+      description: "Description 6",
+      reseña: 5,
+      date: new Date("2023-01-06"),
+      number: 6,
+      type: "movie",
+    },
+    {
+      id: 7,
+      title: "Media 7",
+      portada: "https://picsum.photos/400/1007",
+      banner: "https://picsum.photos/1000/407",
+      description: "Description 7",
+      reseña: 5,
+      date: new Date("2023-01-07"),
+      number: 7,
+      type: "movie",
+    },
+    {
+      id: 8,
+      title: "Media 8",
+      portada: "https://picsum.photos/400/1008",
+      banner: "https://picsum.photos/1000/408",
+      description: "Description 8",
+      reseña: 5,
+      date: new Date("2023-01-08"),
+      number: 8,
+      type: "movie",
+    },
+    {
+      id: 9,
+      title: "Media 9",
+      portada: "https://picsum.photos/400/1009",
+      banner: "https://picsum.photos/1000/409",
+      description: "Description 9",
+      reseña: 5,
+      date: new Date("2023-01-09"),
+      number: 9,
+      type: "movie",
+    },
+    {
+      id: 10,
+      title: "Media 10",
+      portada: "https://picsum.photos/400/1010",
+      banner: "https://picsum.photos/1000/410",
+      description: "Description 10",
+      reseña: 5,
+      date: new Date("2023-01-10"),
+      number: 10,
+      type: "movie",
+    },
+  ];
 
-
-const medias : Array<Tmedia> = [
-    {
-        id: 1,
-        title: "Media 1",
-        image: "https://picsum.photos/1000/400",
-        description: "Description 1",
-        reseña: 5,
-        date: new Date("2023-01-01"),
-        number: 1,
-        type: "movie"
-    },
-    {
-        id: 2,
-        title: "Media 2",
-        image: "https://picsum.photos/1000/401",
-        description: "Description 2",
-        reseña: 5,
-        date: new Date("2023-01-02"),
-        number: 2,
-        type: "movie"
-    },
-    {
-        id: 3,
-        title: "Media 3",
-        image: "https://picsum.photos/1000/402",
-        description: "Description 3",
-        reseña: 5,
-        date: new Date("2023-01-03"),
-        number: 3,
-        type: "movie"
-    },
-    {
-        id: 4,
-        title: "Media 4",
-        image: "https://picsum.photos/1000/403",
-        description: "Description 4",
-        reseña: 5,
-        date: new Date("2023-01-04"),
-        number: 4,
-        type: "movie"
-    },
-    {
-        id: 5,
-        title: "Media 5",
-        image: "https://picsum.photos/1000/404",
-        description: "Description 5",
-        reseña: 5,
-        date: new Date("2023-01-05"),
-        number: 5,
-        type: "movie"
-    },
-    {
-        id: 6,
-        title: "Media 6",
-        image: "https://picsum.photos/1000/405",
-        description: "Description 6",
-        reseña: 5,
-        date: new Date("2023-01-06"),
-        number: 6,
-        type: "movie"
-    },
-    {
-        id: 7,
-        title: "Media 7",
-        image: "https://picsum.photos/1000/406",
-        description: "Description 7",
-        reseña: 5,
-        date: new Date("2023-01-07"),
-        number: 7,
-        type: "movie"
-    },
-    {
-        id: 8,
-        title: "Media 8",
-        image: "https://picsum.photos/1000/407",
-        description: "Description 8",
-        reseña: 5,
-        date: new Date("2023-01-08"),
-        number: 8,
-        type: "movie"
-    },
-    {
-        id: 9,
-        title: "Media 9",
-        image: "https://picsum.photos/1000/408",
-        description: "Description 9",
-        reseña: 5,
-        date: new Date("2023-01-09"),
-        number: 9,
-        type: "movie"
-    },
-    {
-        id: 10,
-        title: "Media 10",
-        image: "https://picsum.photos/1000/409",
-        description: "Description 10",
-        reseña: 5,
-        date: new Date("2023-01-10"),
-        number: 10,
-        type: "movie"
-    }
-];
-
-    return(
-        <Carousel medias={medias} />
-        )
+  return <Carousel medias={medias} />;
 }
-
-

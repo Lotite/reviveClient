@@ -2,7 +2,7 @@ import { AiFillStar } from "react-icons/ai";
 import { Tmedia } from "../../utils/types"
 import style from "./galery.module.css"
 export default function GaleryItem({media,dialogCall}:{media:Tmedia , dialogCall?:(media:Tmedia)=>void}){
-    return(<div className={`${style.container} aspect-Portada group`} onClick={()=>{dialogCall?.(media)}}>
+    return(<div className={`${style.container} aspect-Portada group`} style={{backgroundImage:`url(${media.portada})`}} onClick={()=>{dialogCall?.(media)}}>
         <div className={style.bg}>
             <div className=" absolute px-2 bottom-5 w-full">
                 <h3 className="pl-2">{media.title}</h3>

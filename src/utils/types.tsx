@@ -47,18 +47,25 @@ export type TtailwindColors = {
 export type Tmedia = {
     id:number,
     title:string,
-    image: string,
+    portada: string,
+    banner:string,
     description: string,
     reseña:number,
     date:Date ,
     number:number,
     type:"movie" | "serie" | "season" | "episodie",
+    duracion? : number
+    clasificaion?:number
+    generos?: Array<string>,
+    reparto?: Array<string>,
+    director? : string,
 }
 
 export type Tdialog = {
-    className? : string,
+    classContainer ?: string,
     children? : React.ReactNode ,
     onClose? : CallableFunction,
     onOpen? : CallableFunction,
-    display ? : "flex" | "hidden"
+    display ? : "flex" | "hidden",
+    backgrounColor ? : TtailwindColors["background"];
 }

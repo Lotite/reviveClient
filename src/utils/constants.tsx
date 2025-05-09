@@ -15,6 +15,7 @@ export const colors = {
     blue: "#22d3ee2f",
     green: "#22c55e2f",
     white: "#0000",
+    none: ""
   },
   hover: {
     none: "",
@@ -90,6 +91,7 @@ export const tailwindColors = {
       dark: " bg-background-dark ",
       medium: " bg-background-medium ",
       medium2: " bg-background-medium2 ",
+      none : "",
     },
     hover: {
       white: " hover:bg-background-hover-white ",
