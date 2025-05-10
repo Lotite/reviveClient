@@ -20,12 +20,12 @@ export default function Form({ className, children, validator }: { className?: s
             {children}
             <HR text="O continua con" textColor="green"/>
             <div className="flex justify-between">
-            <Button color="medium2" className="flex justify-center items-center">
+            <Button color="medium2" className="flex py-3 px-7 justify-center items-center w-1/2 mx-1">
                 <BsGoogle className="mx-1"/>
                 Google
             </Button>
-            <Button color="medium2" className="flex justify-center items-center">
-                <FaFacebookF />
+            <Button color="medium2" className="flex py-3 px-7 justify-center items-center w-1/2 mx-1">
+                <FaFacebookF className="mr-1 text-2xl" />
                 Facebook
             </Button>
             </div>

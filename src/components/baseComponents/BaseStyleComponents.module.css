@@ -1,5 +1,5 @@
 @import "../../index.css";
 
 .buttonFrom {
-    @apply  text-white text-2xl rounded-md   m-1 cursor-pointer px-2
+    @apply  text-white text-2xl rounded-md    cursor-pointer 
 }

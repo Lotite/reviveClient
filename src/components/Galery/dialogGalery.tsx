@@ -20,7 +20,7 @@ export default function DialogGalery({dialogState,selectedMedia,onClose}:{dialog
         onClose={onClose}
       >
         <div
-          className="w-full overflow-hidden h-[40%] relative"
+          className="w-full overflow-hidden h-[50%] relative"
           style={{ backgroundImage: `url(${selectedMedia?.banner})` }}
         >
           <div className="w-full h-full bg-gradient-to-b bg-[#0000] from-40% to-background-medium2 to-100%">

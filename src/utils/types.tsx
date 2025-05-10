@@ -16,6 +16,22 @@ export type Tinput = {
     children?: React.ReactNode;
 }
 
+export type TinputElements = {
+    name?: HTMLInputElement ;
+    email?: HTMLInputElement ;
+    password?: HTMLInputElement ;
+    passwordConfirm?: HTMLInputElement ;
+    terms?: HTMLInputElement ;
+}
+
+export type TerrorFromUser ={
+    name?:string,
+    email?:string,
+    password?:string,
+    passwordConfirm?:string,
+    terms?:string
+}
+
 export type TcheckBox = {
     label?: string;
     id?: string;
@@ -36,7 +52,7 @@ export type Tbutton = {
     disabled?: boolean;
 }
 
-export type ToptionsInput = "text" | "email" | "password" | "number" | "tel" | "url"
+export type ToptionsInput = "text" | "email" | "password" | "number" | "tel" | "url" | "name"|"terms"
 
 
 export type TtailwindColors = {

@@ -22,7 +22,7 @@ export default function Dialog(props:Tdialog){
         if (props.display !== undefined) {
             if(props.display == "flex"){
                 setDisplay("flex");
-               setTimeout(()=>{ setOpacity(100);},50)
+               setTimeout(()=>{ setOpacity(100);},100)
                 props.onOpen?.();
             }else{
                 setOpacity(0);

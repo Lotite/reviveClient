@@ -1,26 +1,54 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import CheckBox from "../../components/FormComponents/checkBox";
 import Input from "../../components/FormComponents/Input";
 import InputPassword from "../../components/FormComponents/InputPassword";
 import Link from "../../components/baseComponents/link/Link";
 import { ButtonFrom } from "../../components/FormComponents/buttonFrom";
 import Form from "../../components/FormComponents/From";
+import { validateForm } from "../../utils/functions";
+import { TerrorFromUser, TinputElements } from "../../utils/types";
 
 
 
 export default function RegisterPage() {
-    const pass = useRef<HTMLInputElement>(null);
+    const name = useRef<HTMLInputElement>(null);
+    const email = useRef<HTMLInputElement>(null);
+    const password = useRef<HTMLInputElement>(null);
+    const passwordConfirm = useRef<HTMLInputElement>(null);
+    const terms = useRef<HTMLInputElement>(null);
+    
+   const getInputs = ():TinputElements => {return  {
+    name: name.current!,
+    email: email.current!,
+    password: password.current!,
+    passwordConfirm: passwordConfirm.current!,
+    terms: terms.current!
+}   } 
+
+
+
+    const [error, setError] = useState<TerrorFromUser>({});
+
+
+
+    function validateRegister(){
+        const {isValid,errors} = validateForm(getInputs());
+        setError(errors);
+        return isValid;
+    }
+
+
 
     return (
         <>
-        <Form >
+        <Form validator={validateRegister}>
             <h1 className="title text-center">Crear Cuenta</h1>
             <p className="text-center text-medium">Únete a Revive y comienza a disfrutar</p>
-            <Input label="Nombre" placeholder="Ingresa tu nombre"/>
-            <Input label="Correo" placeholder="Ingresa tu correo" type="email"/>
-            <InputPassword label="Contraseña" ref={pass} placeholder="Ingresa tu contraseña" />
-            <InputPassword label="Contraseña" placeholder="Ingresa tu contraseña" />
-            <CheckBox label="Acepto términos y condiciones">
+            <Input          label="Nombre"     placeholder="Ingresa tu nombre"     error={error.name}            ref={name}            onChange={()=>{setError({...error,name:undefined})}}      />
+            <Input          label="Correo"     placeholder="Ingresa tu correo"     error={error.email}           ref={email}           onChange={()=>{setError({...error,email:undefined})}}     type="email"/>
+            <InputPassword  label="Contraseña" placeholder="Ingresa tu contraseña" error={error.password}        ref={password}        onChange={()=>{setError({...error,password:undefined})}}/>
+            <InputPassword  label="Contraseña" placeholder="Ingresa tu contraseña" error={error.passwordConfirm} ref={passwordConfirm} onChange={()=>{setError({...error,passwordConfirm:undefined})}}      />
+            <CheckBox label="Acepto términos y condiciones" error={error.terms} ref={terms} onChange={()=>{setError({...error,terms:undefined})}}>
                 <label>
                     Acepto los <Link href="/terms"  color="blue">Términos y condiciones</Link>
                 </label>

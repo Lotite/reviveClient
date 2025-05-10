@@ -6,23 +6,40 @@ import { AiFillStar } from "react-icons/ai";
 import style from "./Carousel.module.css";
 import { Button } from "../baseComponents/Button/Button";
 import { Tmedia } from "../../utils/types";
-import { useState} from "react";
+import { useEffect, useState} from "react";
 import { setBackgroundColor } from "../../utils/functions";
 
-export default function Carousel({medias}:{medias:Array<Tmedia>}){
+export default function Carousel({medias,openDialog}:{medias:Array<Tmedia>,openDialog:(media:Tmedia)=>void}){
     const [position,setPosition] = useState<number>(0);
+    let intervalChange :number;
+
+
+    useEffect(() => {
+        intervalChange = setInterval(() => {
+            changePosition(1);
+        }, 5000);
+        return () => clearInterval(intervalChange);
+    },[position])
+
+
 
     function changePosition(pos=1){
         const count = medias.length ;
         const newPos = (position + pos + count) % count;
         setImage(newPos);
     }
+    
 
-    function setImage(pos:number){
-        if(pos !== position){
-            setPosition(pos);
+    function setImage(pos:number,oldPosition :number = position){
+        if(pos !== oldPosition){
+            const newPosition = (pos> oldPosition ? 1 : -1) + oldPosition;
+            setPosition(newPosition) ;
+            setTimeout(() => {
+                setImage(pos,newPosition);
+            }, 100);
         }
     }
+    
 
     function newImageContainer(media:Tmedia,pos:number){
         return(<div className={style.imageContainer} style={{
@@ -35,7 +52,7 @@ export default function Carousel({medias}:{medias:Array<Tmedia>}){
                 left: 0,
                 width: '100%',
                 height: '100%',
-                background: `linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, var(--color-background-dark) 100%), url(${media.image})`,
+                background: `linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, var(--color-background-dark) 100%), url(${media.banner})`,
                 backgroundSize: 'cover',
                 backgroundRepeat: 'no-repeat',
             }}></div>
@@ -73,7 +90,7 @@ export default function Carousel({medias}:{medias:Array<Tmedia>}){
                 <BiPlay />
                 Reproducir
             </Button>
-            <Button className="flex items-center justify-center" color="medium2">
+            <Button onclick={()=>{openDialog(medias[position])}} className="flex items-center justify-center" color="medium2">
                 <AiOutlineInfoCircle />
                 Más info
             </Button>
