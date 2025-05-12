@@ -7,6 +7,7 @@ import { ButtonFrom } from "../../components/FormComponents/buttonFrom";
 import Form from "../../components/FormComponents/From";
 import { validateForm } from "../../utils/functions";
 import { TerrorFromUser, TinputElements } from "../../utils/types";
+import ServerApi from "../../services/ServerApi";
 
 
 
@@ -32,16 +33,31 @@ export default function RegisterPage() {
 
 
     function validateRegister(){
+        return true;
         const {isValid,errors} = validateForm(getInputs());
         setError(errors);
         return isValid;
     }
 
 
+    async function  validateRegisterServer(){
+        const request = await ServerApi.register({
+            name: name.current?.value || '',
+            email: email.current?.value || '',
+            password: password.current?.value || '',
+            passwordConfirm: passwordConfirm.current?.value || '',
+            terms: terms.current?.checked || false,
+        });
+
+        if(!request.succes){
+            setError(request.data!);
+        }
+        return request.succes;
+    }
 
     return (
         <>
-        <Form validator={validateRegister}>
+        <Form validator={validateRegister} serverValidator={validateRegisterServer} action="/login">
             <h1 className="title text-center">Crear Cuenta</h1>
             <p className="text-center text-medium">Únete a Revive y comienza a disfrutar</p>
             <Input          label="Nombre"     placeholder="Ingresa tu nombre"     error={error.name}            ref={name}            onChange={()=>{setError({...error,name:undefined})}}      />

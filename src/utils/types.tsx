@@ -24,6 +24,14 @@ export type TinputElements = {
     terms?: HTMLInputElement ;
 }
 
+export type TinputsValue ={
+    name?: string
+    email?: string
+    password?: string
+    passwordConfirm?: string
+    terms?: boolean
+}
+
 export type TerrorFromUser ={
     name?:string,
     email?:string,
@@ -40,6 +48,11 @@ export type TcheckBox = {
     ref?: React.RefObject<HTMLInputElement | null>;
     onChange?: (checked: boolean) => void;
     error?: string;
+}
+export type Trequest<T>= {
+    succes:boolean,
+    message:string,
+    data?:T
 }
 
 export type Tbutton = {

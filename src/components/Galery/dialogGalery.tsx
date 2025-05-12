@@ -31,10 +31,10 @@ export default function DialogGalery({dialogState,selectedMedia,onClose}:{dialog
         </div>
         <div className="px-3 w-full flex-1">
           <div className="w-full flex flex-row">
-            <Button color="blue" className="px-2 flex  flex-row items-center">
-              <BiPlay className="text-4xl" /> Reproducir
+            <Button color="blue" className="px-2 py-1 mx-1 flex  flex-row items-center">
+              <BiPlay className="text-4xl " /> Reproducir
             </Button>
-            <Button color="medium" className="px-4 flex flex-row items-center">
+            <Button color="medium" className="px-2 py-1 mx-1 flex flex-row items-center">
               <AiOutlinePlus /> Añadir
             </Button>
           </div>

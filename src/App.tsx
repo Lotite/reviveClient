@@ -7,7 +7,7 @@ import P404 from "./pages/others/P404"
 import Home from "./pages/index/Home"
 import Pruebas from "./pages/others/pruebas"
 import { isDesktopDevice } from "./utils/functions"
-import Dialog from "./components/Dialog/Dialog"
+
 
 
 
@@ -23,7 +23,6 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="flex flex-col h-screen">
         <Header />
         <main className=" flex-grow relative overflow-y-auto"> {/* o flex-1 */}
           <Routes>
@@ -35,7 +34,6 @@ function App() {
           </Routes>
           
         </main>
-      </div>
     </BrowserRouter>
   )
 }

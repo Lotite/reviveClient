@@ -86,16 +86,16 @@ export default function Carousel({medias,openDialog}:{medias:Array<Tmedia>,openD
         </div>
 
         <div className="absolute flex w-100 bottom-10 left-5 " >
-            <Button className="flex items-center justify-center " color="orange">
-                <BiPlay />
+            <Button className="flex items-center justify-center mx-2 px-4 py-2" color="orange">
+                <BiPlay className="text-2xl"/>
                 Reproducir
             </Button>
-            <Button onclick={()=>{openDialog(medias[position])}} className="flex items-center justify-center" color="medium2">
-                <AiOutlineInfoCircle />
+            <Button onclick={()=>{openDialog(medias[position])}} className="flex items-center justify-center mx-2 px-4 py-2" color="medium2">
+                <AiOutlineInfoCircle className="mr-2" />
                 Más info
             </Button>
         </div>
-        <div className="absolute bottom-4 left-1/2 w-full justify-center -translate-x-1/2 flex space-x-2 z-10">
+        <div className="absolute bottom-4 left-1/2 w-full justify-center -translate-x-1/2 flex space-x-2 ">
         {medias.map((_media,index)=>{return(selector(index))})}
         </div>
     </div>)

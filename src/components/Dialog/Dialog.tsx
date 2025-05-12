@@ -36,7 +36,7 @@ export default function Dialog(props:Tdialog){
     }, [props]);
 
 
-    return(<div onClick={Close} className={`fixed ${display} opacity-${opacity} transition-opacity duration-500 top-0 left-0 w-[100vw] h-[100vh] bg-background-hover-dark bg-opacity-50 flex items-center justify-center `}>
+    return(<div onClick={Close} style={{opacity}} className={`fixed ${display}  transition-opacity duration-500 top-0 left-0 w-[100vw] h-[100vh] bg-background-hover-dark bg-opacity-50 flex items-center justify-center `}>
         <div className={`${props.classContainer} rounded-2xl overflow-hidden max-w-[900px] max-h-[600px]   mx-auto`} style={{backgroundColor:colors.background[props.backgrounColor ?? "none" ]}} onClick={(e) => e.stopPropagation()}>
             {props.children}
         </div>

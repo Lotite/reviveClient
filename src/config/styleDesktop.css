@@ -1,8 +1,9 @@
 @import "./../index.css";
-main {
+
+.scroll {
     scroll-behavior: smooth;
     
-    @apply max-h-[91vh] overflow-y-auto 
+    @apply  overflow-y-auto 
     [&::-webkit-scrollbar]:w-2
 
     [&::-webkit-scrollbar-track]:rounded-full
