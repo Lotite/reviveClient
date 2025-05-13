@@ -33,7 +33,6 @@ export default function RegisterPage() {
 
 
     function validateRegister(){
-        return true;
         const {isValid,errors} = validateForm(getInputs());
         setError(errors);
         return isValid;
