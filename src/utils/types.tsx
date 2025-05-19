@@ -29,7 +29,8 @@ export type TinputsValue ={
     email?: string
     password?: string
     passwordConfirm?: string
-    terms?: boolean
+    terms?: boolean,
+    remember?: boolean
 }
 
 export type TerrorFromUser ={
@@ -50,7 +51,7 @@ export type TcheckBox = {
     error?: string;
 }
 export type Trequest<T>= {
-    succes:boolean,
+    success:boolean,
     message:string,
     data?:T
 }
@@ -73,14 +74,14 @@ export type TtailwindColors = {
     background: "blue" | "orange" | "green" | "dark" | "medium" | "medium2";
 };
 
-export type Tmedia = {
+export type TmediaGallery = {
     id:number,
     title:string,
     portada: string,
     banner:string,
     description: string,
     reseña:number,
-    date:Date ,
+    date:string ,
     number:number,
     type:"movie" | "serie" | "season" | "episodie",
     duracion? : number
@@ -98,3 +99,15 @@ export type Tdialog = {
     display ? : "flex" | "hidden",
     backgrounColor ? : TtailwindColors["background"];
 }
+
+
+
+  export type Tgenero = {
+    "id": number,
+    "nombre_genero": string
+  }
+
+  export type TrecomendationMedia = {
+    "medias" : Array<TmediaGallery> ,
+    "genero" : Tgenero ,
+  }

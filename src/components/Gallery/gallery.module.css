@@ -9,7 +9,7 @@
     @apply relative hover:scale-110 my-4 transition-transform rounded-lg overflow-hidden cursor-pointer;
 }
 
-.titleGalery{
+.titleGallery{
     margin-bottom:5px !important;
     padding:0 !important;
     @apply text-xl  font-bold mb-4;

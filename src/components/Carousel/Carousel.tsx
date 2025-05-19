@@ -5,11 +5,11 @@ import { BiPlay } from "react-icons/bi";
 import { AiFillStar } from "react-icons/ai"; 
 import style from "./Carousel.module.css";
 import { Button } from "../baseComponents/Button/Button";
-import { Tmedia } from "../../utils/types";
+import { TmediaGallery } from "../../utils/types";
 import { useEffect, useState} from "react";
 import { setBackgroundColor } from "../../utils/functions";
 
-export default function Carousel({medias,openDialog}:{medias:Array<Tmedia>,openDialog:(media:Tmedia)=>void}){
+export default function Carousel({medias,openDialog}:{medias:Array<TmediaGallery>,openDialog:(media:TmediaGallery)=>void}){
     const [position,setPosition] = useState<number>(0);
     let intervalChange :number;
 
@@ -41,7 +41,7 @@ export default function Carousel({medias,openDialog}:{medias:Array<Tmedia>,openD
     }
     
 
-    function newImageContainer(media:Tmedia,pos:number){
+    function newImageContainer(media:TmediaGallery,pos:number){
         return(<div className={style.imageContainer} style={{
             transform: `translateX(${(pos - position)*100}%)`,
             position: 'absolute',
@@ -64,7 +64,7 @@ export default function Carousel({medias,openDialog}:{medias:Array<Tmedia>,openD
             <div className="flex" style={{position: 'relative', zIndex: 2}}>
                     <AiFillStar className="text-text-orange text-xl"/>
                     <span className="px-1.5">{media.reseña}</span>
-                    <span className="text-text-medium px-1.5">{media.date.getFullYear()}</span>
+                    <span className="text-text-medium px-1.5">{new Date(media?.date!).getFullYear()}</span>
             </div>
             <p className="text-text-medium max-w-[200px]" style={{position: 'relative', zIndex: 2}}>{media.description}</p>
         </div>)

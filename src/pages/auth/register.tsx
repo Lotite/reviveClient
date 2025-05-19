@@ -48,10 +48,10 @@ export default function RegisterPage() {
             terms: terms.current?.checked || false,
         });
 
-        if(!request.succes){
+        if(!request.success){
             setError(request.data!);
         }
-        return request.succes;
+        return request.success;
     }
 
     return (

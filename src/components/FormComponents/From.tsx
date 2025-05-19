@@ -16,7 +16,7 @@ export default function Form({ className, children, validator , serverValidator 
     };
 
     return (
-        <form className={classContainer} onSubmit={handleSubmit} action={"/login"}  >
+        <form className={classContainer} onSubmit={handleSubmit} action={action}  >
             {children}
             <HR text="O continua con" textColor="green"/>
             <div className="flex justify-between">

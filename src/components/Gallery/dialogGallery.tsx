@@ -2,11 +2,11 @@ import { AiOutlinePlus, AiOutlineCalendar } from "react-icons/ai"
 import { BiPlay } from "react-icons/bi"
 import { CiClock2 } from "react-icons/ci"
 import { SlBadge } from "react-icons/sl"
-import { Tmedia } from "../../utils/types"
+import { TmediaGallery } from "../../utils/types"
 import { Button } from "../baseComponents/Button/Button"
 import Dialog from "../Dialog/Dialog"
 
-export default function DialogGalery({dialogState,selectedMedia,onClose}:{dialogState:"flex"|"hidden",selectedMedia?:Tmedia,onClose:()=>void}){
+export default function DialogGallery({dialogState,selectedMedia,onClose}:{dialogState:"flex"|"hidden",selectedMedia?:TmediaGallery,onClose:()=>void}){
     const strDuracion = {
         movie: "minutos",
         serie: "temporadas",
@@ -25,7 +25,7 @@ export default function DialogGalery({dialogState,selectedMedia,onClose}:{dialog
         >
           <div className="w-full h-full bg-gradient-to-b bg-[#0000] from-40% to-background-medium2 to-100%">
             <h2 className="text-3xl font-bold mb-2 absolute bottom-0 left-0 p-6 w-full">
-              Squid Game
+              {selectedMedia?.title}
             </h2>
           </div>
         </div>
@@ -77,7 +77,7 @@ export default function DialogGalery({dialogState,selectedMedia,onClose}:{dialog
                 <AiOutlineCalendar className="text-main-green mr-2.5"/>
                   <div>
                     <span className="text-xs text-text-medium block">Año</span>
-                    <span className="text-sm text-text-white">{selectedMedia?.date?.getFullYear()}</span>
+                    <span className="text-sm text-text-white">{new Date(selectedMedia?.date!).getFullYear()}</span>
                   </div>
                 </div>
                 <div className="flex items-start">
