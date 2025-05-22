@@ -7,7 +7,7 @@ export default function Input(props: Tinput) {
     const id =props.id ||  useId();
     const classContainer  = props.className ||  "flex flex-col relative pb-6";
     const classLabel = props.classLabel || "text-medium2";
-    const classInput = props.classInput || style.inputFrom + ` border ${props.error ? "border-1 border-red-500" : "border-0" }`;
+    const classInput = props.classInput || style.inputFrom + ` border ${props.error != undefined ? "border-1 border-red-500" : "border-0" }`;
     const classError = props.classError || "text-red-500 text-sm mt-1 absolute bottom-0";
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -27,11 +27,12 @@ export default function Input(props: Tinput) {
                 id={id}
                 type={props.type || "text"}   
                 className={ classInput}  
-                value={props.value !== undefined ? props.value : undefined}  
+                defaultValue={props.value !== undefined ? props.value : undefined}  
                 placeholder={props.placeholder || ""} 
                 onChange={handleChange}
                 ref={props.ref}
                 onBlur={props.onBlur}
+                onKeyDown={props.onKeyDown}
             />
             {props.children}
             {props.error && <p className={classError}>{props.error}</p>}

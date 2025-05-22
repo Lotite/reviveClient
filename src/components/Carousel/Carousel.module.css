@@ -2,7 +2,7 @@
 
 .container{
     height: 500px !important;
-    @apply w-full   overflow-hidden relative;
+    @apply min-w-full  overflow-hidden relative;
 }
 
 .imageContainer{

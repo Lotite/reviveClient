@@ -1,4 +1,4 @@
-import { TerrorFromUser, TinputsValue, TrecomendationMedia, Trequest } from "../utils/types";
+import { TAccountError, TdevicesList, TerrorFromUser, TinputsValue, TrecomendationMedia, Trequest } from "../utils/types";
 
 export default class ServerApi{
     static readonly api: string = "http://192.168.1.141:81/api/";
@@ -14,21 +14,30 @@ static async sendRequest<T>(path: string, body?: any , method:"POST"|"GET" = "PO
     if (body) {
         options.body = JSON.stringify(body);
     }
-    try {
-        const response = await fetch(ServerApi.api + path, options);
-        const data = await response.json();
-        return {
-            success: data.success,
-            message: data.message || '',
-            data: data.data as T,
-        } as Trequest<T>;
-    } catch (error: any) {
-        return {
-            success: false,
-            message: error.message || 'Error en la petición',
-            data: null as T,
-        } as Trequest<T>;
-    }
+        try {
+            const response = await fetch(ServerApi.api + path, options);
+            const data:Trequest<T> = await response.json();
+
+           
+           
+            if (data.session) {
+                Object.entries(data.session).forEach(([key, value]) => {
+                    sessionStorage.setItem(key, value);
+                });
+            }
+            
+            return {
+                success: data.success,
+                message: data.message || '',
+                data: data.data as T,
+            } as Trequest<T>;
+        } catch (error: any) {
+            return {
+                success: false,
+                message: error.message || 'Error en la petición',
+                data: null as T,
+            } as Trequest<T>;
+        }
 }
 
 
@@ -42,7 +51,11 @@ static async login($data:TinputsValue):Promise<Trequest<TerrorFromUser>>{
     }
 
 static async validateSession(){
-    return await this.sendRequest<any>("validateSession");
+    const response = await this.sendRequest<any>("validateSession");
+    if (!response.success) {
+        sessionStorage.clear();
+    }
+    return response;
 }
 
 static async getHomeRecomentions(){
@@ -54,11 +67,35 @@ static async getMoviesRecomentions(){
 }
 
 static async getSeriesRecomentions(){
-    return await ServerApi.sendRequest<Array<TrecomendationMedia>>("series");
+    return await ServerApi.sendRequest<Array<TrecomendationMedia>>("seriesN");
 }
 
+static async updateUser(data: {name?: string; email?: string}): Promise<Trequest<TerrorFromUser>> {
+    return await this.sendRequest("updateUser", data);
+}
 
+static async changePassword(data: { currentPassword: string; newPassword: string; confirmPassword: string; keepSessions?: boolean }): Promise<Trequest<TAccountError>> {
+    return await this.sendRequest("changePassword", data);
+  }
 
-    
+static async getUserDevices(): Promise<Trequest<TdevicesList>> {
+    return await this.sendRequest("getUserDevices", undefined, "POST");
+}
+
+static async deleteDevice(deviceId: string): Promise<Trequest<null>> {
+    return await this.sendRequest("deleteDevice", { id: deviceId }, "POST");
+}
+
+static async deleteOtherDevices(): Promise<Trequest<null>> {
+    return await this.sendRequest("deleteOtherDevices", undefined, "POST");
+}
+
+static async deleteUser(): Promise<Trequest<null>> {
+    return await this.sendRequest("deleteUser", undefined, "POST");
+}
+
+static async logout(): Promise<Trequest<null>> {
+    return await this.sendRequest("logout", undefined, "POST");
+}
 
 }

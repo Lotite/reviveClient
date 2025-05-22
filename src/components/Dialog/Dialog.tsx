@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Tdialog } from "../../utils/types";
 import { colors } from "../../utils/constants";
 
-
 export default function Dialog(props:Tdialog){
 
     const [display,setDisplay] = useState(
@@ -36,8 +35,8 @@ export default function Dialog(props:Tdialog){
     }, [props]);
 
 
-    return(<div onClick={Close} style={{opacity}} className={`fixed ${display}  transition-opacity duration-500 top-0 left-0 w-[100vw] h-[100vh] bg-background-hover-dark bg-opacity-50 flex items-center justify-center `}>
-        <div className={`${props.classContainer} rounded-2xl overflow-hidden max-w-[900px] max-h-[600px]   mx-auto`} style={{backgroundColor:colors.background[props.backgrounColor ?? "none" ]}} onClick={(e) => e.stopPropagation()}>
+    return(<div onClick={Close} style={{opacity}} className={`fixed ${display}  transition-opacity duration-500 top-0 left-0 w-[100vw] h-[100vh] bg-background-hover-dark bg-opacity-50 flex items-center justify-center z-[9999]`}>
+        <div  className={`${props.classContainer} rounded-2xl overflow-hidden max-w-[900px] max-h-[600px]   mx-auto`} style={{backgroundColor:colors.background[props.backgrounColor ?? "none" ]}} onClick={(e) => e.stopPropagation()}>
             {props.children}
         </div>
     </div>)

@@ -1,4 +1,4 @@
-import IndexView from "../../components/IndexView.tsx/IndexView";
+import IndexView from "../../components/IndexView/IndexView";
 import ServerApi from "../../services/ServerApi";
 
 

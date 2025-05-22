@@ -10,6 +10,7 @@ import { isDesktopDevice } from "./utils/functions";
 import ServerApi from "./services/ServerApi";
 import Movies from "./pages/index/Movies";
 import Series from "./pages/index/Series";
+import SettingsPage from "./pages/others/SettingsPage";
 
 function App() {
 
@@ -37,6 +38,7 @@ function App() {
     if(result.success && beingLogin()){
       location.href = "/";
     }else if(!result.success && !beingLogin()) {
+      
       location.href = "/login";
     }
   }
@@ -61,6 +63,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/pruebas" element={<Pruebas />} />
+          <Route path="/settings" element={<SettingsPage />} />
           <Route path="/*" element={<P404 />} />
         </Routes>
       </main>
