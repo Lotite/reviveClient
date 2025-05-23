@@ -66,7 +66,7 @@ export default function Login() {
           label="Contraseña"
           placeholder="Ingresa tu contraseña"
         >
-          <Link href="/" color="orange" className="absolute top-0 right-1">
+          <Link href="/" color="orange" className="absolute top-0 right-1 text-xs sm:text-base">
             ¿Olvidaste tu contraseña?
           </Link>
         </InputPassword>
@@ -75,7 +75,7 @@ export default function Login() {
       </Form>
       <p className=" my-3 text-center">
         ¿No tienes una cuenta?{" "}
-        <Link href="/register" color="blue">
+        <Link  href="/register" color="blue">
           Crear cuenta
         </Link>
       </p>

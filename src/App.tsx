@@ -11,13 +11,16 @@ import ServerApi from "./services/ServerApi";
 import Movies from "./pages/index/Movies";
 import Series from "./pages/index/Series";
 import SettingsPage from "./pages/others/SettingsPage";
+import { LoadingProvider, useLoading } from "./contexts/LoadingContext";
+import LoadingScreen from "./components/Loading/LoadingScreen";
 
 function App() {
+  const firstRender = useRef(true);
+  const { isLoading, showLoading, hideLoading } = useLoading();
 
   useEffect(() => {
     let isFirstRender = firstRender.current;
     firstRender.current = false;
-
     if (isFirstRender) {
       redirect();
     }
@@ -30,45 +33,49 @@ function App() {
     }
   }, [location]);
 
-  const firstRender = useRef(true);
-
-  async function redirect(){
-
+  async function redirect() {
+    showLoading();
     const result = await ServerApi.validateSession();
-    if(result.success && beingLogin()){
+    hideLoading();
+
+    if (result.success && beingLogin()) {
       location.href = "/";
-    }else if(!result.success && !beingLogin()) {
-      
+    } else if (!result.success && !beingLogin()) {
       location.href = "/login";
     }
   }
 
-  function beingLogin():boolean{
+  function beingLogin(): boolean {
     return location.pathname === "/login" || location.pathname === "/register";
   }
 
-
-
   return (
-    <BrowserRouter>
-      <Header />
-      <main className=" flex-grow relative overflow-y-auto">
-        {" "}
-        {/* o flex-1 */}
-        <Routes>
-          <Route path="/" element={<Home />}  />
-          <Route path="/home" element={<Home />}  />
-          <Route path="/movies" element={<Movies />}  />
-          <Route path="/series" element={<Series />}  />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/pruebas" element={<Pruebas />} />
-          <Route path="/settings" element={<SettingsPage />} />
-          <Route path="/*" element={<P404 />} />
-        </Routes>
-      </main>
-    </BrowserRouter>
+    <LoadingProvider>
+      <BrowserRouter>
+        <Header />
+        <main className=" flex-grow relative overflow-y-auto">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/movies" element={<Movies />} />
+            <Route path="/series" element={<Series />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/pruebas" element={<Pruebas />} />
+            <Route path="/settings" element={<SettingsPage />} />
+            <Route path="/*" element={<P404 />} />
+          </Routes>
+        </main>
+        {isLoading && <LoadingScreen />}
+      </BrowserRouter>
+    </LoadingProvider>
   );
 }
 
-export default App;
+export default function AppWrapper() {
+  return (
+    <LoadingProvider>
+      <App />
+    </LoadingProvider>
+  );
+}

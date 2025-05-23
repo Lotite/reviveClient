@@ -9,6 +9,9 @@ export default function Dialog(props:Tdialog){
     );
     const [opacity,setOpacity] = useState<0|100>(display=="flex" ? 100 : 0);
 
+    const ContainerHeight = props.constainerHeight ? props.constainerHeight : "600px";
+    const ContainerWidth = props.constainerWidth ? props.constainerWidth : "900px";
+
     function Close(){
         setOpacity(0);
         props.onClose?.();
@@ -36,7 +39,7 @@ export default function Dialog(props:Tdialog){
 
 
     return(<div onClick={Close} style={{opacity}} className={`fixed ${display}  transition-opacity duration-500 top-0 left-0 w-[100vw] h-[100vh] bg-background-hover-dark bg-opacity-50 flex items-center justify-center z-[9999]`}>
-        <div  className={`${props.classContainer} rounded-2xl overflow-hidden max-w-[900px] max-h-[600px]   mx-auto`} style={{backgroundColor:colors.background[props.backgrounColor ?? "none" ]}} onClick={(e) => e.stopPropagation()}>
+        <div  className={`${props.classContainer} rounded-2xl overflow-hidden h-[${ContainerHeight}px] w-[${ContainerWidth}]   mx-auto`} style={{backgroundColor:colors.background[props.backgrounColor ?? "none" ]}} onClick={(e) => e.stopPropagation()}>
             {props.children}
         </div>
     </div>)

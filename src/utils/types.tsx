@@ -121,6 +121,8 @@ export type Tdialog = {
   children?: React.ReactNode;
   onClose?: CallableFunction;
   onOpen?: CallableFunction;
+  constainerHeight?: string;
+  constainerWidth?: string;
   display?: "flex" | "hidden";
   backgrounColor?: TtailwindColors["background"];
 };
@@ -188,4 +190,10 @@ export type TabsContentProps = {
   value: string
   children: React.ReactNode
   className?: string
+}
+
+export type LoadingContextType = {
+  isLoading: boolean
+  showLoading: () => void
+  hideLoading: () => void
 }

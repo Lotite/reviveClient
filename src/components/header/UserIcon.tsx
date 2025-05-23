@@ -70,7 +70,7 @@ export default function UserIcon({ webLocation }: UserIconProps) {
   }, [])
 
   return (
-    <div className={isMobile ? "relative" : "absolute right-0" } ref={dropdownRef}>
+    <div className={isMobile ? "absolute bottom-5" : "absolute right-0" } ref={dropdownRef}>
       <div
         className={`w-10 h-10 text-2xl bg-background-blue rounded-full flex items-center justify-center cursor-pointer ${
           isMobile ? "" : "-bottom-5 absolute right-0"
