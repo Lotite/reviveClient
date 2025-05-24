@@ -97,7 +97,7 @@ export default function DialogGallery({
                 <div>
                   <span className="text-xs text-text-medium block">Año</span>
                   <span className="text-sm text-text-white">
-                    {new Date(selectedMedia?.date!).getFullYear()}
+                    { selectedMedia?.date && new Date(selectedMedia.date!).getFullYear()}
                   </span>
                 </div>
               </div>

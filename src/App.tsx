@@ -13,9 +13,15 @@ import Series from "./pages/index/Series";
 import SettingsPage from "./pages/others/SettingsPage";
 import { LoadingProvider, useLoading } from "./contexts/LoadingContext";
 import LoadingScreen from "./components/Loading/LoadingScreen";
+import { NotificationProvider } from "./contexts/NotificationContext";
+import NotificationContainer from "./components/Notification/NotificationContainer";
+import { ConfirmProvider } from "./contexts/ConfirmContext";
+import ConfirmDialog from "./components/Confirm/ConfirmDialog";
 
 function App() {
-  const { isLoading, showLoading, hideLoading, setSessionValidated } = useLoading();
+  const { isLoading, showLoading, hideLoading, setSessionValidated } =
+    useLoading();
+
 
   useEffect(() => {
     if (isLoading) {
@@ -31,14 +37,16 @@ function App() {
 
   async function redirect() {
     showLoading();
+
     const result = await ServerApi.validateSession();
 
+
+    setSessionValidated(result.success);
+
     if (result.success && beingLogin()) {
-      setSessionValidated(true);
       location.href = "/";
       return;
     } else if (!result.success && !beingLogin()) {
-      setSessionValidated(false);
       location.href = "/login";
       return;
     }
@@ -53,32 +61,38 @@ function App() {
   }
 
   return (
-    <LoadingProvider>
-      <BrowserRouter>
-        <Header />
-        <main className=" flex-grow relative overflow-y-auto">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/movies" element={<Movies />} />
-            <Route path="/series" element={<Series />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/pruebas" element={<Pruebas />} />
-            <Route path="/settings" element={<SettingsPage />} />
-            <Route path="/*" element={<P404 />} />
-          </Routes>
-        </main>
-        {isLoading && <LoadingScreen />}
-      </BrowserRouter>
-    </LoadingProvider>
+    <>
+      <Header />
+      <main className=" flex-grow relative overflow-y-auto">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/movies" element={<Movies />} />
+          <Route path="/series" element={<Series />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/pruebas" element={<Pruebas />} />
+          <Route path="/settings" element={<SettingsPage />} />
+          <Route path="/*" element={<P404 />} />
+        </Routes>
+      </main>
+      <LoadingScreen />
+      <NotificationContainer />
+      <ConfirmDialog />
+    </>
   );
 }
 
 export default function AppWrapper() {
   return (
-    <LoadingProvider>
-      <App />
-    </LoadingProvider>
+    <BrowserRouter>
+      <LoadingProvider>
+        <NotificationProvider>
+          <ConfirmProvider>
+            <App />
+          </ConfirmProvider>
+        </NotificationProvider>
+      </LoadingProvider>
+    </BrowserRouter>
   );
 }

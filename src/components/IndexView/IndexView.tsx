@@ -137,7 +137,7 @@ export default function IndexView({request}:{request:() => Promise<Trequest<Arra
     }
   ];
 
-  const {hideLoading} = useLoading();
+  const {hideLoading,sessionValidated} = useLoading();
 
   const [recomentions, setRecomentions] = useState<Array<TrecomendationMedia>>([]);
   const [dialogState, SetdialogState] = useState<"hidden" | "flex">("hidden");
@@ -154,14 +154,17 @@ export default function IndexView({request}:{request:() => Promise<Trequest<Arra
 
   useEffect(() => {
     async function fetchRecomentions() {
-      const result = await request();
-      if (result.success) {
-        setRecomentions(result.data || []);
-          hideLoading();
+      if(sessionValidated){
+        const result = await request();
+        if (result.success) {
+          setRecomentions(result.data || []);
+        }
+        hideLoading();
       }
     }
+    
     fetchRecomentions();
-  });
+  },[sessionValidated]);
 
   return (
     <>

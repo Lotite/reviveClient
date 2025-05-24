@@ -3,12 +3,15 @@ import DevicesList from "./DevicesList"
 import { TdevicesList } from "../../utils/types"
 import { Button } from "../baseComponents/Button/Button"
 import ServerApi from "../../services/ServerApi"
+import { useConfirm } from "../../contexts/ConfirmContext"
+import { useNotification } from "../../contexts/NotificationContext"
 
 
 export default function DevicesSettings() {
   const [devices, setDevices] = useState<TdevicesList>([])
   const [isLoading, setIsLoading] = useState(true)
-
+  const confirm = useConfirm();
+  const {addNotification} = useNotification();
 
   useEffect(() => {
     (async()=>{await loadDevices();})()
@@ -24,15 +27,29 @@ export default function DevicesSettings() {
 
 
   const deleteOtherDevices = async () => {
-    if (confirm("¿Estás seguro de que quieres eliminar todos los dispositivos?")) {
-      const response = await ServerApi.deleteOtherDevices();
-      if (response.success) {
-        alert("Dispositivos eliminados correctamente")
-        loadDevices()
-      } else {
-        alert(response.message)
-      }
-    }
+    await confirm({
+        title:"Eliminar todos los dispositivos",
+        message: "¿Estás seguro de que quieres eliminar todos los dispositivos?",
+        type: "warning", 
+        confirmText: "Eliminar",
+        onConfirm: async () => {
+          const response = await ServerApi.deleteOtherDevices();
+          if (response.success) {
+            addNotification({
+              type: "success",
+              message: "Dispositivos eliminados correctamente",
+            });
+            loadDevices();
+          } else {
+            addNotification({
+              type: "error",
+              message: "Error al eliminar los dispositivos",
+            });
+          }
+        }
+      })
+    
+    
   }
 
   return (

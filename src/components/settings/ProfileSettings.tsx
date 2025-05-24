@@ -3,12 +3,16 @@ import { Button } from "../baseComponents/Button/Button";
 import Input from "../FormComponents/Input";
 import { validateForm } from "../../utils/functions";
 import ServerApi from "../../services/ServerApi";
+import { useNotification } from "../../contexts/NotificationContext";
+import { useConfirm } from "../../contexts/ConfirmContext";
 
 export default function ProfileSettings() {
   const nameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
-
   const [error, setError] = useState<{name?: string; email?: string}>({});
+
+  const {addNotification} = useNotification();
+  const confirm = useConfirm();
 
   useEffect(() => {
     const name = sessionStorage.getItem("name") || "";
@@ -52,9 +56,23 @@ export default function ProfileSettings() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const confirmed = await confirm({
+      title: "Guardar cambios",
+      message: "¿Estás seguro de que quieres guardar los cambios?",
+      type: "info",
+      confirmText: "Guardar",
+    });
+    if (!confirmed) return;
+
     if(!validateClient()) return;
     if(!(await validateServer())) return;
-    alert("Cambios guardados correctamente");
+    addNotification({
+      type: "success",
+      message: "Cambios guardados correctamente",
+      duration: 3000,
+    });
+    sessionStorage.setItem("name", nameRef.current?.value || "");
+    sessionStorage.setItem("email", emailRef.current?.value || "");
   };
 
   return (

@@ -3,13 +3,16 @@ import { Button } from "../baseComponents/Button/Button"
 import ServerApi from "../../services/ServerApi"
 import { TAccountError } from "../../utils/types"
 import InputPassword from "../FormComponents/InputPassword"
+import { useNotification } from "../../contexts/NotificationContext"
+import { useConfirm } from "../../contexts/ConfirmContext"
 
 export default function AccountSettings() {
   const currentPasswordRef = useRef<HTMLInputElement>(null)
   const newPasswordRef = useRef<HTMLInputElement>(null)
   const confirmPasswordRef = useRef<HTMLInputElement>(null)
 
-
+  const {addNotification} = useNotification()
+  const confirm = useConfirm();
   const [error, setError] = useState<TAccountError>({})
   const [keepSessions, setKeepSessions] = useState<boolean>(false)
 
@@ -57,27 +60,45 @@ export default function AccountSettings() {
 
   const handlePasswordSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!confirm("¿Estás seguro de que quieres cambiar tu contraseña?")) return
+    const response = await confirm({ message: "¿Estás seguro de que quieres cambiar tu contraseñaa?",type:"info"})
+    if(!response) return
     if (!validateClient()) return
     if (!(await validateServer())) return
-    alert("Contraseña actualizada correctamente")
+    addNotification({
+      type: "success",
+      message: "Contraseña actualizada correctamente",
+      duration: 3000,
+    })
   }
 
   const handleDeleteAccount = async () => {
-    if (!confirm("¿Estás seguro de que quieres eliminar tu cuenta? Esta acción es permanente.")) {
-      return
-    }
-    try {
-      const response = await ServerApi.deleteUser();
-      if (response.success) {
-        alert("Cuenta eliminada correctamente");
-        window.location.href = "/login";
-      } else {
-        alert("Error al eliminar la cuenta: " + response.message);
-      }
-    } catch (error) {
-      alert("Error inesperado al eliminar la cuenta");
-    }
+     confirm({
+        title:"Eliminar Cuenta?"
+        ,message: "¿Estás seguro de que quieres eliminar tu cuenta? Esta acción es permanente."
+        ,type: "warning"
+        ,confirmText: "Eliminar"
+        ,onConfirm: async () => {
+          try {
+            const response = await ServerApi.deleteUser();
+            if (response.success) {
+              alert("Cuenta eliminada correctamente");
+              window.location.href = "/login";
+            } else {
+              addNotification({
+                type: "error",
+                message: "Error al eliminar la cuenta: " + response.message,
+                duration: 3000,
+              })
+            }
+          } catch (error) {
+            addNotification({
+              type: "error",
+              message: "Error inesperado al eliminar la cuenta",
+              duration: 3000,
+            })
+          }
+        }
+      })
   }
 
   return (

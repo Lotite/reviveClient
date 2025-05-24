@@ -42,7 +42,7 @@ export default function Carousel({medias,openDialog}:{medias:Array<TmediaGallery
     
 
     function newImageContainer(media:TmediaGallery,pos:number){
-        return(<div className={style.imageContainer} style={{
+        return(<div key={pos} className={style.imageContainer} style={{
             transform: `translateX(${(pos - position)*100}%)`,
             position: 'absolute',
             }}>
@@ -73,7 +73,7 @@ export default function Carousel({medias,openDialog}:{medias:Array<TmediaGallery
     function selector(pos:number){
         const isActive = pos === position;
         const widthClass = isActive ? "w-6" : "w-2";
-        return( <Button className={`${widthClass} transition-all h-2 rounded-full ${style.selector}`} color={isActive ? "orange" : "medium2"} onclick={() => setImage(pos)} />)
+        return( <Button key={pos} className={`${widthClass} transition-all h-2 rounded-full ${style.selector}`} color={isActive ? "orange" : "medium2"} onclick={() => setImage(pos)} />)
     }
 
     return(<div className={style.container}>

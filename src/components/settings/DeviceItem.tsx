@@ -2,13 +2,16 @@ import { FiSmartphone, FiMonitor, FiTablet, FiClock, FiCalendar } from "react-ic
 import type { Tdevice } from "../../utils/types"
 import { Button } from "../baseComponents/Button/Button"
 import ServerApi from "../../services/ServerApi";
-import { data } from "react-router-dom";
+import { useConfirm } from "../../contexts/ConfirmContext";
+import { useNotification } from "../../contexts/NotificationContext";
+
 
 export default function DeviceItem({ device, onDelete }: { device: Tdevice; onDelete?: () => void }) {
   const sessionDeviceId = sessionStorage.getItem("device") || ""
 
   const isCurrentDevice = device.id == sessionDeviceId
-
+  const confirm = useConfirm()
+  const { addNotification } = useNotification()
 
 
 
@@ -108,20 +111,28 @@ export default function DeviceItem({ device, onDelete }: { device: Tdevice; onDe
 
   const deleteDevice = async () => {
 
-    const confirmDelete = confirm(
-      `¿Estás seguro de que quieres eliminar el dispositivo "${device.device_name}"?`
+    const confirmDelete = await confirm(
+      {title:"Eliminar dispositivo", message: "¿Estás seguro de que quieres eliminar este dispositivo? Esta acción es permanente.", type:"warning", confirmText: "Eliminar"}
     )
     if (confirmDelete) {
 
       const response = await ServerApi.deleteDevice(device.id)
       if (response.success) {
-        alert("Se eliminó el dispositivo correctamente")
+        addNotification({
+          type: "success",
+          message: "Se eliminó el dispositivo correctamente",
+          duration: 3000,
+        })
         if (onDelete) {
           onDelete()
         }
         return
       }
-      alert(response.message)
+      addNotification({
+        type: "error",
+        message: response.message,
+        duration: 3000,
+      })
     }
   }
 

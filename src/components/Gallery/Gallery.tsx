@@ -7,8 +7,8 @@ export default function xGallery({categoryName: categoryName,medias,dialogCall}:
     return(<div className="mx-5 mt-3 mb-5">
         <h2 className={style.titleGallery}>{categoryName}</h2>
         <div className="grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-8  gap-4 h-fit">
-        {medias.map(media=>{
-            return(<GalleryItem media={media} dialogCall={dialogCall} />)
+        {medias.map((media,index)=>{
+            return(<GalleryItem key={index} media={media} dialogCall={dialogCall} />)
         })}
     </div>
     </div>);

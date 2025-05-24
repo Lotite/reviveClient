@@ -63,7 +63,7 @@ export default function LoadingScreen() {
         <div className="relative">
           <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-pink-500/20 blur-3xl scale-110 opacity-60"></div>
 
-          <div className="relative w-[500px] h-[300px] bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-3xl p-3 shadow-2xl border border-slate-700/50">
+          <div className="relative w-[400px] h-[250px] lg:w-[500px] lg:h-[300px] bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-3xl p-3 shadow-2xl border border-slate-700/50">
             <div className="relative w-full h-full bg-black rounded-2xl overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent rounded-2xl"></div>
 

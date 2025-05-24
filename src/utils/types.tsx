@@ -139,13 +139,13 @@ export type TrecomendationMedia = {
 
 export type TdeviceType = "movil" | "ordenador";
 
-// Tipo actualizado para dispositivos
+
 export type Tdevice = {
   user_id: number;
   device_name: string;
-  last_active_timestamp: string; // Usamos string para representar DateTime
+  last_active_timestamp: string;
   id: string;
-  register_at: string; // Usamos string para representar DateTime
+  register_at: string; 
 };
 export type TdevicesList = Array<Tdevice>;
 
@@ -198,4 +198,46 @@ export type LoadingContextType = {
   showLoading: () => void
   hideLoading: () => void,
   setSessionValidated: (value: boolean) => void;
+}
+
+
+export type NotificationType = "info" | "success" | "warning" | "error"
+
+export type Notification = {
+  id: string
+  message: string
+  type: NotificationType
+  title?: string
+  duration?: number
+}
+
+export type NotificationContextType = {
+  notifications: Notification[]
+  addNotification: (notification: Omit<Notification, "id">) => string
+  removeNotification: (id: string) => void
+  clearNotifications: () => void
+}
+
+
+export type ConfirmOptions = {
+  title?: string
+  message: string
+  confirmText?: string
+  cancelText?: string
+  type?: "info" | "success" | "warning" | "error"
+  onConfirm?: () => void
+  onCancel?: () => void
+}
+
+export type ConfirmContextType = {
+  confirm: (options: ConfirmOptions) => Promise<boolean>
+  isOpen: boolean
+  options: ConfirmOptions | null
+  handleConfirm: () => void
+  handleCancel: () => void
+}
+
+export type NotificationItemProps = {
+  notification: Notification
+  onRemove: (id: string) => void
 }
