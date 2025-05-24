@@ -1,17 +1,16 @@
 import { LoadingContextType } from "../utils/types"
 import { createContext, useContext, useState, type ReactNode } from "react"
 
-
-
 const LoadingContext = createContext<LoadingContextType | undefined>(undefined)
 
 export const LoadingProvider = ({ children }: { children: ReactNode }) => {
   const [isLoading, setIsLoading] = useState(true)
+  const [sessionValidated, setSessionValidated] = useState(false)
 
   const showLoading = () => setIsLoading(true)
   const hideLoading = () => setIsLoading(false)
 
-  return <LoadingContext.Provider value={{ isLoading, showLoading, hideLoading }}>{children}</LoadingContext.Provider>
+  return <LoadingContext.Provider value={{ isLoading, showLoading, hideLoading, sessionValidated, setSessionValidated }}>{children}</LoadingContext.Provider>
 }
 
 export const useLoading = (): LoadingContextType => {

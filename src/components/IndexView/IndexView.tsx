@@ -3,6 +3,7 @@ import { TmediaGallery, TrecomendationMedia, Trequest } from "../../utils/types"
 import Carousel from "../Carousel/Carousel";
 import DialogGallery from "../Gallery/dialogGallery";
 import Gallery from "../Gallery/Gallery";
+import { useLoading } from "../../contexts/LoadingContext";
 
 export default function IndexView({request}:{request:() => Promise<Trequest<Array<TrecomendationMedia>>>}){
   const medias: Array<TmediaGallery> = [
@@ -136,6 +137,8 @@ export default function IndexView({request}:{request:() => Promise<Trequest<Arra
     }
   ];
 
+  const {hideLoading} = useLoading();
+
   const [recomentions, setRecomentions] = useState<Array<TrecomendationMedia>>([]);
   const [dialogState, SetdialogState] = useState<"hidden" | "flex">("hidden");
   const [selectedMedia, setSelectedMedia] = useState<TmediaGallery>();
@@ -152,19 +155,28 @@ export default function IndexView({request}:{request:() => Promise<Trequest<Arra
   useEffect(() => {
     async function fetchRecomentions() {
       const result = await request();
-      if(result.success){
+      if (result.success) {
         setRecomentions(result.data || []);
+          hideLoading();
       }
     }
     fetchRecomentions();
-  }, [])
+  });
 
-  return (<>
-    <Carousel medias={medias} openDialog={openDialog} />
-    <div className="h-300 flex flex-col">{recomentions.map((recomention, index) => (
-      <Gallery key={index} dialogCall={openDialog} categoryName={recomention.genero.nombre_genero} medias={recomention.medias} />
-    ))}
-      <DialogGallery selectedMedia={selectedMedia} onClose={closeDialog} dialogState={dialogState} />
-    </div>
-  </>);
+  return (
+    <>
+      <Carousel medias={medias} openDialog={openDialog} />
+      <div className="h-300 flex flex-col">
+        {recomentions.map((recomention, index) => (
+          <Gallery
+            key={index}
+            dialogCall={openDialog}
+            categoryName={recomention.genero.nombre_genero}
+            medias={recomention.medias}
+          />
+        ))}
+        <DialogGallery selectedMedia={selectedMedia} onClose={closeDialog} dialogState={dialogState} />
+      </div>
+    </>
+  );
 }

@@ -193,7 +193,9 @@ export type TabsContentProps = {
 }
 
 export type LoadingContextType = {
-  isLoading: boolean
+  isLoading: boolean,
+  sessionValidated?: boolean,
   showLoading: () => void
-  hideLoading: () => void
+  hideLoading: () => void,
+  setSessionValidated: (value: boolean) => void;
 }

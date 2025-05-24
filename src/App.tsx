@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import Header from "./components/header/Header";
 import RegisterPage from "./pages/auth/Register";
 import Login from "./pages/auth/Login";
@@ -15,16 +15,12 @@ import { LoadingProvider, useLoading } from "./contexts/LoadingContext";
 import LoadingScreen from "./components/Loading/LoadingScreen";
 
 function App() {
-  const firstRender = useRef(true);
-  const { isLoading, showLoading, hideLoading } = useLoading();
+  const { isLoading, showLoading, hideLoading, setSessionValidated } = useLoading();
 
   useEffect(() => {
-    let isFirstRender = firstRender.current;
-    firstRender.current = false;
-    if (isFirstRender) {
+    if (isLoading) {
       redirect();
     }
-
     const isDesktop = isDesktopDevice();
     if (isDesktop) {
       import("./config/styleDesktop.css");
@@ -36,12 +32,19 @@ function App() {
   async function redirect() {
     showLoading();
     const result = await ServerApi.validateSession();
-    hideLoading();
 
     if (result.success && beingLogin()) {
+      setSessionValidated(true);
       location.href = "/";
+      return;
     } else if (!result.success && !beingLogin()) {
+      setSessionValidated(false);
       location.href = "/login";
+      return;
+    }
+    const pageCustomLoading = ["/", "/home", "/series", "/movies"];
+    if (!pageCustomLoading.includes(location.pathname)) {
+      hideLoading();
     }
   }
 
