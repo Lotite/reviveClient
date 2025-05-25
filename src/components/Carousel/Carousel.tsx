@@ -1,17 +1,20 @@
-import { AiOutlineRight } from "react-icons/ai"; 
-import { AiOutlineLeft } from "react-icons/ai"; 
-import { AiOutlineInfoCircle } from "react-icons/ai"; 
-import { BiPlay } from "react-icons/bi"; 
-import { AiFillStar } from "react-icons/ai"; 
+import { AiOutlineRight } from "react-icons/ai";
+import { AiOutlineLeft } from "react-icons/ai";
+import { AiOutlineInfoCircle } from "react-icons/ai";
+import { BiPlay } from "react-icons/bi";
+import { AiFillStar } from "react-icons/ai";
 import style from "./Carousel.module.css";
 import { Button } from "../baseComponents/Button/Button";
 import { TmediaGallery } from "../../utils/types";
 import { useEffect, useState} from "react";
 import { setBackgroundColor } from "../../utils/functions";
+import { useDialogGallery } from "../../contexts/DialogGalleryContext"; 
 
-export default function Carousel({medias,openDialog}:{medias:Array<TmediaGallery>,openDialog:(media:TmediaGallery)=>void}){
+export default function Carousel({medias}:{medias:Array<TmediaGallery>}){ 
     const [position,setPosition] = useState<number>(0);
     let intervalChange :number;
+
+    const { openDialog } = useDialogGallery();
 
 
     useEffect(() => {

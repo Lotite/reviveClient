@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { TmediaGallery, TrecomendationMedia, Trequest } from "../../utils/types";
 import Carousel from "../Carousel/Carousel";
-import DialogGallery from "../Gallery/dialogGallery";
 import Gallery from "../Gallery/Gallery";
 import { useLoading } from "../../contexts/LoadingContext";
 
@@ -140,17 +139,7 @@ export default function IndexView({request}:{request:() => Promise<Trequest<Arra
   const {hideLoading,sessionValidated} = useLoading();
 
   const [recomentions, setRecomentions] = useState<Array<TrecomendationMedia>>([]);
-  const [dialogState, SetdialogState] = useState<"hidden" | "flex">("hidden");
-  const [selectedMedia, setSelectedMedia] = useState<TmediaGallery>();
 
-  function openDialog(media: TmediaGallery) {
-    setSelectedMedia(media);
-    SetdialogState("flex");
-  }
-
-  function closeDialog() {
-    SetdialogState("hidden");
-  }
 
   useEffect(() => {
     async function fetchRecomentions() {
@@ -168,17 +157,15 @@ export default function IndexView({request}:{request:() => Promise<Trequest<Arra
 
   return (
     <>
-      <Carousel medias={medias} openDialog={openDialog} />
+      <Carousel medias={medias}  />
       <div className="h-300 flex flex-col">
         {recomentions.map((recomention, index) => (
           <Gallery
             key={index}
-            dialogCall={openDialog}
             categoryName={recomention.genero.nombre_genero}
             medias={recomention.medias}
           />
         ))}
-        <DialogGallery selectedMedia={selectedMedia} onClose={closeDialog} dialogState={dialogState} />
       </div>
     </>
   );

@@ -1,4 +1,4 @@
-import { AiOutlinePlus, AiOutlineCalendar } from "react-icons/ai";
+import { AiOutlinePlus, AiOutlineCalendar, AiOutlineClose } from "react-icons/ai";
 import { BiPlay } from "react-icons/bi";
 import { CiClock2 } from "react-icons/ci";
 import { SlBadge } from "react-icons/sl";
@@ -24,13 +24,25 @@ export default function DialogGallery({
   return (
     <Dialog
       display={dialogState}
-      classContainer="w-[80%] h-[80%] flex flex-col relative pb-5"
+      classContainer="w-[80%] h-[80%] flex flex-col relative pb-5" 
       backgrounColor="medium2"
       onClose={onClose}
     >
+      <button
+        className="absolute top-3 right-3 text-text-white hover:text-text-lightGray z-10 rounded-full bg-black bg-opacity-50 p-1" // Added styling for round, transparent black background and padding
+        onClick={onClose}
+      >
+        <AiOutlineClose className="text-2xl" />
+      </button>
+
       <div
         className="w-full overflow-hidden h-[50%] relative"
-        style={{ backgroundImage: `url(${selectedMedia?.banner})` }}
+        style={{
+          backgroundImage: `url(${selectedMedia?.banner})`,
+          backgroundSize: 'cover', 
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center', 
+        }}
       >
         <div className="w-full h-full bg-gradient-to-b bg-[#0000] from-40% to-background-medium2 to-100%">
           <h2 className="text-3xl font-bold mb-2 absolute bottom-0 left-0 p-6 w-full">
@@ -38,7 +50,7 @@ export default function DialogGallery({
           </h2>
         </div>
       </div>
-      <div className="px-3 w-full flex-1">
+      <div className="w-full flex-1 px-3"> 
         <div className="w-full flex flex-row">
           <Button
             color="blue"
