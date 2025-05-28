@@ -8,6 +8,7 @@ import Form from "../../components/FormComponents/From";
 import { validateForm } from "../../utils/functions";
 import { TerrorFromUser, TinputElements } from "../../utils/types";
 import ServerApi from "../../services/ServerApi";
+import { useNotification } from "../../contexts/NotificationContext";
 
 
 
@@ -25,6 +26,8 @@ export default function RegisterPage() {
     passwordConfirm: passwordConfirm.current!,
     terms: terms.current!
 }   } 
+
+const {addNotification} = useNotification();
 
 
 
@@ -51,16 +54,25 @@ export default function RegisterPage() {
         if(!request.success){
             setError(request.data!);
         }
-        return request.success;
+
+        if(request.session){
+            addNotification({
+                type: "success",
+                message: request.message,
+                duration: 3000
+            });
+        }
+
+        return false;
     }
 
     return (
         <>
-        <Form validator={validateRegister} serverValidator={validateRegisterServer} action="/login">
+        <Form validator={validateRegister} serverValidator={validateRegisterServer} action="#">
             <h1 className="title text-center">Crear Cuenta</h1>
             <p className="text-center text-medium">Únete a Revive y comienza a disfrutar</p>
             <Input          label="Nombre"     placeholder="Ingresa tu nombre"     error={error.name}            ref={name}            onChange={()=>{setError({...error,name:undefined})}}      />
-            <Input          label="Correo"     placeholder="Ingresa tu correo"     error={error.email}           ref={email}           onChange={()=>{setError({...error,email:undefined})}}     type="email"/>
+            <Input          label="Correo"     placeholder="Ingresa tu correo"     error={error?.email}           ref={email}           onChange={()=>{setError({...error,email:undefined})}}     type="email"/>
             <InputPassword  label="Contraseña" placeholder="Ingresa tu contraseña" error={error.password}        ref={password}        onChange={()=>{setError({...error,password:undefined})}}/>
             <InputPassword  label="Contraseña" placeholder="Ingresa tu contraseña" error={error.passwordConfirm} ref={passwordConfirm} onChange={()=>{setError({...error,passwordConfirm:undefined})}}      />
             <CheckBox label="Acepto términos y condiciones" error={error.terms} ref={terms} onChange={()=>{setError({...error,terms:undefined})}}>

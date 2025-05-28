@@ -5,6 +5,7 @@ import { SlBadge } from "react-icons/sl";
 import { TmediaGallery } from "../../utils/types";
 import { Button } from "../baseComponents/Button/Button";
 import Dialog from "../Dialog/Dialog";
+import RecommendedMedia from "./RecommendedMedia";
 
 export default function DialogGallery({
   dialogState,
@@ -24,24 +25,24 @@ export default function DialogGallery({
   return (
     <Dialog
       display={dialogState}
-      classContainer="w-[80%] h-[80%] flex flex-col relative pb-5" 
+      classContainer="w-[80%] h-[90%] flex flex-col relative" 
       backgrounColor="medium2"
       onClose={onClose}
     >
       <button
-        className="absolute top-3 right-3 text-text-white hover:text-text-lightGray z-10 rounded-full bg-black bg-opacity-50 p-1" // Added styling for round, transparent black background and padding
+        className="absolute top-3 right-3 text-text-white  z-10 rounded-full bg-black hover:bg-black/80 cursor-pointer bg-opacity-50 p-1"
         onClick={onClose}
       >
         <AiOutlineClose className="text-2xl" />
       </button>
 
       <div
-        className="w-full overflow-hidden h-[50%] relative"
+        className="w-full overflow-hidden h-[30%] relative "
         style={{
           backgroundImage: `url(${selectedMedia?.banner})`,
-          backgroundSize: 'cover', 
+          backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center', 
+          backgroundPosition: 'center',
         }}
       >
         <div className="w-full h-full bg-gradient-to-b bg-[#0000] from-40% to-background-medium2 to-100%">
@@ -50,7 +51,7 @@ export default function DialogGallery({
           </h2>
         </div>
       </div>
-      <div className="w-full flex-1 px-3"> 
+      <div className="w-full flex-1 px-3 overflow-y-auto scroll">
         <div className="w-full flex flex-row">
           <Button
             color="blue"
@@ -66,7 +67,7 @@ export default function DialogGallery({
           </Button>
         </div>
         <p className="text-text-medium">{selectedMedia?.description}</p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1  md:grid-cols-2 gap-6">
           <div>
             <div className="mb-4">
               <h3 className="text-sm font-medium text-text-white mb-2">
@@ -128,6 +129,12 @@ export default function DialogGallery({
             </div>
           </div>
         </div>
+        <RecommendedMedia
+          title="Contenido recomendado"
+          currentMedia={selectedMedia}
+          itemCount={12}
+          gridCols="grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6"
+        />
       </div>
     </Dialog>
   );

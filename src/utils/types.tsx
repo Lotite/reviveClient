@@ -15,6 +15,7 @@ export type Tinput = {
   ref?: React.RefObject<HTMLInputElement | null>;
   children?: React.ReactNode;
   onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  maxLength?: number;
 };
 
 export type TAccountError = {
@@ -30,6 +31,7 @@ export type TinputElements = {
   password?: HTMLInputElement;
   passwordConfirm?: HTMLInputElement;
   terms?: HTMLInputElement;
+  code?: HTMLInputElement;
 };
 
 export type TinputsValue = {
@@ -39,6 +41,7 @@ export type TinputsValue = {
   passwordConfirm?: string;
   terms?: boolean;
   remember?: boolean;
+  code?: string;
 };
 
 export type TerrorFromUser = {
@@ -47,6 +50,7 @@ export type TerrorFromUser = {
   password?: string;
   passwordConfirm?: string;
   terms?: string;
+  code?: string;
 };
 
 export type TcheckBox = {
@@ -240,4 +244,43 @@ export type ConfirmContextType = {
 export type NotificationItemProps = {
   notification: Notification
   onRemove: (id: string) => void
+}
+
+
+export type recommendedMedia = {
+  title?: string
+  currentMedia?: TmediaGallery
+  itemCount?: number
+  className?: string
+  gridCols?: string
+  showBorder?: boolean
+}
+
+export type Step1EmailProps = {
+  email: string;
+  setEmail: (email: string) => void;
+  handleSendCode: () => Promise<void>;
+  isLoading: boolean;
+  errors: { [key: string]: string };
+}
+
+export type Step2CodeProps = {
+  code: string;
+  setCode: (code: string) => void;
+  handleVerifyCode: () => Promise<void>;
+  handleResendCode: () => Promise<void>;
+  isLoading: boolean;
+  errors: { [key: string]: string };
+  email: string;
+  countdown: number;
+}
+
+export type Step3PasswordProps = {
+  newPassword: string;
+  setNewPassword: (password: string) => void;
+  confirmPassword: string;
+  setConfirmPassword: (password: string) => void;
+  handleResetPassword: () => Promise<void>;
+  isLoading: boolean;
+  errors: { [key: string]: string };
 }

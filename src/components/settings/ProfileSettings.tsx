@@ -95,7 +95,7 @@ export default function ProfileSettings() {
             ref={emailRef}
             placeholder="Correo electrónico"
             onChange={() => setError({...error, email: undefined})}
-            error={error.email}
+            error={error?.email}
           />
 
         <div className="pt-2">

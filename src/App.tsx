@@ -1,9 +1,10 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useEffect } from "react";
 import Header from "./components/header/Header";
-import DialogGallery from "./components/Gallery/dialogGallery"; // Import DialogGallery
+import DialogGallery from "./components/Gallery/dialogGallery"; 
 import RegisterPage from "./pages/auth/Register";
 import Login from "./pages/auth/Login";
+import Recover from "./pages/auth/Recover/Recover";
 import P404 from "./pages/others/P404";
 import Home from "./pages/index/Home";
 import { isDesktopDevice } from "./utils/functions";
@@ -17,7 +18,7 @@ import { NotificationProvider } from "./contexts/NotificationContext";
 import NotificationContainer from "./components/Notification/NotificationContainer";
 import { ConfirmProvider } from "./contexts/ConfirmContext";
 import ConfirmDialog from "./components/Confirm/ConfirmDialog";
-import { DialogGalleryProvider, useDialogGallery } from "./contexts/DialogGalleryContext"; // Import DialogGalleryProvider and useDialogGallery
+import { DialogGalleryProvider, useDialogGallery } from "./contexts/DialogGalleryContext";
 
 function DialogGalleryRenderer() {
   const { dialogState, selectedMedia, closeDialog } = useDialogGallery();
@@ -68,7 +69,7 @@ function App() {
   }
 
   function beingLogin(): boolean {
-    return location.pathname === "/login" || location.pathname === "/register";
+    return location.pathname === "/login" || location.pathname === "/register" || location.pathname === "/recover";
   }
 
   return (
@@ -82,6 +83,7 @@ function App() {
           <Route path="/series" element={<Series />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<RegisterPage />} />
+          <Route path="/recover" element={<Recover />} />
           <Route path="/settings" element={<SettingsPage />} />
           <Route path="/*" element={<P404 />} />
         </Routes>

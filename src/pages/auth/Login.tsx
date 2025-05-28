@@ -66,7 +66,7 @@ export default function Login() {
           label="Contraseña"
           placeholder="Ingresa tu contraseña"
         >
-          <Link href="/" color="orange" className="absolute top-0 right-1 text-xs sm:text-base">
+          <Link href="/recover" color="orange" className="absolute top-0 right-1 text-xs sm:text-base">
             ¿Olvidaste tu contraseña?
           </Link>
         </InputPassword>

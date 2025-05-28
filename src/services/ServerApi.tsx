@@ -1,7 +1,7 @@
-import { TAccountError, TdevicesList, TerrorFromUser, TinputsValue, TrecomendationMedia, Trequest } from "../utils/types";
+import { TAccountError, TdevicesList, TerrorFromUser, TinputsValue, TrecomendationMedia, Trequest, TmediaGallery } from "../utils/types";
 
 export default class ServerApi{
-    static readonly api: string = "http://192.168.1.141:81/api/";
+    static readonly api: string = "http://127.0.0.1:81/api/";
 
 static async sendRequest<T>(path: string, body?: any , method:"POST"|"GET" = "POST"): Promise<Trequest<T>> {
     const options: RequestInit = {
@@ -50,6 +50,18 @@ static async login($data:TinputsValue):Promise<Trequest<TerrorFromUser>>{
     return await this.sendRequest("login",$data);
     }
 
+static async recoverRequest(email: string): Promise<Trequest<{ token?: string, email?: string }>> {
+    return await this.sendRequest("recoverRequest", { email });
+}
+
+static async recoverVerify(email: string, code: string): Promise<Trequest<{ token?: string }>> {
+    return await this.sendRequest("recoverVerify", { email, code });
+}
+
+static async recoverReset(email: string, code: string, token: string, newPassword: string, confirmPassword: string): Promise<Trequest<null>> {
+    return await this.sendRequest("recoverReset", { email, code, token, newPassword, confirmPassword });
+}
+
 static async validateSession(){
     const response = await this.sendRequest<any>("validateSession");
     if (!response.success) {
@@ -96,6 +108,14 @@ static async deleteUser(): Promise<Trequest<null>> {
 
 static async logout(): Promise<Trequest<null>> {
     return await this.sendRequest("logout", undefined, "POST");
+}
+
+static async getRecommendedMedia(media_id: string, quantity: string): Promise<Trequest<Array<TmediaGallery>>> {
+    return await this.sendRequest("recommendateSimilar", { media_id, quantity });
+}
+
+static async searchMedia(name: string): Promise<Trequest<Array<TmediaGallery>>> {
+    return await this.sendRequest("search", { name });
 }
 
 }
