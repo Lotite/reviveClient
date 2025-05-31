@@ -1,7 +1,7 @@
 import { TAccountError, TdevicesList, TerrorFromUser, TinputsValue, TrecomendationMedia, Trequest, TmediaGallery } from "../utils/types";
 
 export default class ServerApi{
-    static readonly api: string = "http://127.0.0.1:81/api/";
+    static readonly api: string = "http://192.168.1.141:81/api/";
 
 static async sendRequest<T>(path: string, body?: any , method:"POST"|"GET" = "POST"): Promise<Trequest<T>> {
     const options: RequestInit = {

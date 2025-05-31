@@ -6,6 +6,7 @@ import { TmediaGallery } from "../../utils/types";
 import { Button } from "../baseComponents/Button/Button";
 import Dialog from "../Dialog/Dialog";
 import RecommendedMedia from "./RecommendedMedia";
+import { useMediaPlayer } from "../../contexts/MediaPlayerContext";
 
 export default function DialogGallery({
   dialogState,
@@ -22,27 +23,30 @@ export default function DialogGallery({
     season: "episodios",
     episodie: "minutos",
   };
+
+  const { playVideo } = useMediaPlayer();
+
   return (
     <Dialog
       display={dialogState}
-      classContainer="w-[80%] h-[90%] flex flex-col relative" 
+      classContainer="w-[80%] h-[90%] flex flex-col relative"
       backgrounColor="medium2"
       onClose={onClose}
     >
       <button
-        className="absolute top-3 right-3 text-text-white  z-10 rounded-full bg-black hover:bg-black/80 cursor-pointer bg-opacity-50 p-1"
+        className="absolute top-3 right-3 text-text-white z-10 rounded-full bg-black hover:bg-black/80 cursor-pointer bg-opacity-50 p-1"
         onClick={onClose}
       >
         <AiOutlineClose className="text-2xl" />
       </button>
 
       <div
-        className="w-full overflow-hidden h-[30%] relative "
+        className="w-full overflow-hidden h-[30%] relative"
         style={{
           backgroundImage: `url(${selectedMedia?.banner})`,
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center',
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
         }}
       >
         <div className="w-full h-full bg-gradient-to-b bg-[#0000] from-40% to-background-medium2 to-100%">
@@ -51,9 +55,11 @@ export default function DialogGallery({
           </h2>
         </div>
       </div>
+
       <div className="w-full flex-1 px-3 overflow-y-auto scroll">
         <div className="w-full flex flex-row">
           <Button
+            onclick={() => selectedMedia && playVideo(selectedMedia)}
             color="blue"
             className="px-1 py-0.5 mx-1 flex flex-row items-center text-xs sm:text-base"
           >
@@ -66,27 +72,26 @@ export default function DialogGallery({
             <AiOutlinePlus className="text-xl sm:text-auto" /> Añadir
           </Button>
         </div>
+
         <p className="text-text-medium">{selectedMedia?.description}</p>
-        <div className="grid grid-cols-1  md:grid-cols-2 gap-6">
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <div className="mb-4">
-              <h3 className="text-sm font-medium text-text-white mb-2">
-                Géneros
-              </h3>
+              <h3 className="text-sm font-medium text-text-white mb-2">Géneros</h3>
               <div className="flex flex-wrap gap-2">
-                {selectedMedia?.generos?.map((genero) => {
-                  return (
-                    <span className="bg-background-medium px-3 py-1 rounded-full text-xs">
-                      {genero}
-                    </span>
-                  );
-                })}
+                {selectedMedia?.generos?.map((genero, _key) => (
+                  <span
+                    key={_key}
+                    className="bg-background-medium px-3 py-1 rounded-full text-xs"
+                  >
+                    {genero}
+                  </span>
+                ))}
               </div>
             </div>
             <div className="mb-4">
-              <h3 className="text-sm font-medium text-text-white mb-2">
-                Reparto
-              </h3>
+              <h3 className="text-sm font-medium text-text-white mb-2">Reparto</h3>
               <p className="text-sm text-text-lightGray">
                 {selectedMedia?.reparto?.join(" ")}
               </p>
@@ -94,15 +99,11 @@ export default function DialogGallery({
           </div>
           <div>
             <div className="space-y-3">
-              <div className="flex items-start ">
+              <div className="flex items-start">
                 <SlBadge className="text-star mr-2.5" />
                 <div>
-                  <span className="text-xs text-text-medium block">
-                    Director
-                  </span>
-                  <span className="text-sm text-text-white">
-                    {selectedMedia?.director}
-                  </span>
+                  <span className="text-xs text-text-medium block">Director</span>
+                  <span className="text-sm text-text-white">{selectedMedia?.director}</span>
                 </div>
               </div>
               <div className="flex items-start">
@@ -110,25 +111,23 @@ export default function DialogGallery({
                 <div>
                   <span className="text-xs text-text-medium block">Año</span>
                   <span className="text-sm text-text-white">
-                    { selectedMedia?.date && new Date(selectedMedia.date!).getFullYear()}
+                    {selectedMedia?.date && new Date(selectedMedia.date!).getFullYear()}
                   </span>
                 </div>
               </div>
               <div className="flex items-start">
                 <CiClock2 className="text-main-orange mr-2.5" />
                 <div>
-                  <span className="text-xs text-text-medium block">
-                    Duración
-                  </span>
+                  <span className="text-xs text-text-medium block">Duración</span>
                   <span className="text-sm text-text-white">
-                    {selectedMedia?.duracion}{" "}
-                    {strDuracion[selectedMedia?.type!]}
+                    {selectedMedia?.duracion} {strDuracion[selectedMedia?.type!]}
                   </span>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
         <RecommendedMedia
           title="Contenido recomendado"
           currentMedia={selectedMedia}

@@ -3,20 +3,19 @@
 @import "./config/styleFont.css";
 @import "./config/styleClass.css";
 html, body {
-    height: 100%; /* O min-height: 100vh; */
+    height: 100%; 
     margin: 0;
     padding: 0;
-    overflow-x: hidden; /* Para evitar el scroll horizontal */
+    overflow-x: hidden;
 }
 
 body {
-    overflow-y: auto; /* Para permitir el scroll vertical cuando el contenido excede la altura */
+    overflow-y: auto; 
 }
 
 main {
-    min-height: 100vh; /* Para que al menos ocupe la altura de la pantalla */
-    /* height: auto;  Opcional, para asegurar que se expande con el contenido */
-    overflow: visible; /* Asegura que el contenido se desborde y el scroll sea en el body */
+    min-height: 100vh;
+    overflow: visible; 
 }
 
 

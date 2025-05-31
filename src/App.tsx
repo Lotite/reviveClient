@@ -2,7 +2,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useEffect } from "react";
 import Header from "./components/header/Header";
 import DialogGallery from "./components/Gallery/dialogGallery"; 
-import RegisterPage from "./pages/auth/Register";
 import Login from "./pages/auth/Login";
 import Recover from "./pages/auth/Recover/Recover";
 import P404 from "./pages/others/P404";
@@ -19,6 +18,10 @@ import NotificationContainer from "./components/Notification/NotificationContain
 import { ConfirmProvider } from "./contexts/ConfirmContext";
 import ConfirmDialog from "./components/Confirm/ConfirmDialog";
 import { DialogGalleryProvider, useDialogGallery } from "./contexts/DialogGalleryContext";
+import { MediaPlayerProvider } from "./contexts/MediaPlayerContext";
+import Pruebas from "./pages/others/Pruebas";
+import RegisterPage from "./pages/auth/register";
+import MediaPlayer from "./components/MediaPlayer/MediaPlayer";
 
 function DialogGalleryRenderer() {
   const { dialogState, selectedMedia, closeDialog } = useDialogGallery();
@@ -85,12 +88,15 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/recover" element={<Recover />} />
           <Route path="/settings" element={<SettingsPage />} />
+          <Route path="/pruebas" element={<Pruebas/>}/>
           <Route path="/*" element={<P404 />} />
         </Routes>
       </main>
       <LoadingScreen />
       <NotificationContainer />
       <ConfirmDialog />
+      <DialogGalleryRenderer />
+     <MediaPlayer  />
     </>
   );
 }
@@ -102,8 +108,10 @@ export default function AppWrapper() {
         <NotificationProvider>
           <ConfirmProvider>
             <DialogGalleryProvider>
-              <App />
-              <DialogGalleryRenderer />
+              <MediaPlayerProvider>
+                <App />
+                 
+              </MediaPlayerProvider>
             </DialogGalleryProvider>
           </ConfirmProvider>
         </NotificationProvider>

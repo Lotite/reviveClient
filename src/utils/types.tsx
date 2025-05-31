@@ -118,6 +118,7 @@ export type TmediaGallery = {
   generos?: Array<string>;
   reparto?: Array<string>;
   director?: string;
+  url?: string;
 };
 
 export type Tdialog = {

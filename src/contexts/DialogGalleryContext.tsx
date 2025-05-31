@@ -21,7 +21,7 @@ export const DialogGalleryProvider: React.FC<{ children: ReactNode }> = ({ child
 
   const closeDialog = () => {
     setDialogState("hidden");
-    setSelectedMedia(undefined);
+    setTimeout(()=>{setSelectedMedia(undefined);},500);
   };
 
   return (

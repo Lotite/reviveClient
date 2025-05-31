@@ -55,7 +55,7 @@ const {addNotification} = useNotification();
             setError(request.data!);
         }
 
-        if(request.session){
+        if(request.success){
             addNotification({
                 type: "success",
                 message: request.message,
