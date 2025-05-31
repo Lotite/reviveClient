@@ -130,6 +130,7 @@ export type Tdialog = {
   constainerWidth?: string;
   display?: "flex" | "hidden";
   backgrounColor?: TtailwindColors["background"];
+  scroll?:boolean
 };
 
 export type Tgenero = {

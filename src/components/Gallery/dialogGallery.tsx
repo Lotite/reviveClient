@@ -32,6 +32,7 @@ export default function DialogGallery({
       classContainer="w-[80%] h-[90%] flex flex-col relative"
       backgrounColor="medium2"
       onClose={onClose}
+      scroll={true}
     >
       <button
         className="absolute top-3 right-3 text-text-white z-10 rounded-full bg-black hover:bg-black/80 cursor-pointer bg-opacity-50 p-1"
@@ -40,8 +41,9 @@ export default function DialogGallery({
         <AiOutlineClose className="text-2xl" />
       </button>
 
+      <div className="overflow-x-auto scroll">  
       <div
-        className="w-full overflow-hidden h-[30%] relative"
+        className="w-full relative  overflow-hidden h-[60%]"
         style={{
           backgroundImage: `url(${selectedMedia?.banner})`,
           backgroundSize: "cover",
@@ -56,7 +58,7 @@ export default function DialogGallery({
         </div>
       </div>
 
-      <div className="w-full flex-1 px-3 overflow-y-auto scroll">
+      <div className="w-full  px-3 h-fit ">
         <div className="w-full flex flex-row">
           <Button
             onclick={() => selectedMedia && playVideo(selectedMedia)}
@@ -134,6 +136,7 @@ export default function DialogGallery({
           itemCount={12}
           gridCols="grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6"
         />
+      </div>
       </div>
     </Dialog>
   );
