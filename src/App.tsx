@@ -19,9 +19,9 @@ import { ConfirmProvider } from "./contexts/ConfirmContext";
 import ConfirmDialog from "./components/Confirm/ConfirmDialog";
 import { DialogGalleryProvider, useDialogGallery } from "./contexts/DialogGalleryContext";
 import { MediaPlayerProvider } from "./contexts/MediaPlayerContext";
-import Pruebas from "./pages/others/Pruebas";
 import RegisterPage from "./pages/auth/register";
 import MediaPlayer from "./components/MediaPlayer/MediaPlayer";
+import Pruebas from "./pages/others/pruebas";
 
 function DialogGalleryRenderer() {
   const { dialogState, selectedMedia, closeDialog } = useDialogGallery();
