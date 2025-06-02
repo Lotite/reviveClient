@@ -21,7 +21,7 @@ import { DialogGalleryProvider, useDialogGallery } from "./contexts/DialogGaller
 import { MediaPlayerProvider } from "./contexts/MediaPlayerContext";
 import RegisterPage from "./pages/auth/register";
 import MediaPlayer from "./components/MediaPlayer/MediaPlayer";
-import Pruebas from "./pages/others/pruebas";
+import Library from "./pages/others/Library";
 
 function DialogGalleryRenderer() {
   const { dialogState, selectedMedia, closeDialog } = useDialogGallery();
@@ -88,15 +88,15 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/recover" element={<Recover />} />
           <Route path="/settings" element={<SettingsPage />} />
-          <Route path="/pruebas" element={<Pruebas/>}/>
+          <Route path="/library" element={<Library/>}/>
           <Route path="/*" element={<P404 />} />
         </Routes>
       </main>
       <LoadingScreen />
-      <NotificationContainer />
       <ConfirmDialog />
       <DialogGalleryRenderer />
      <MediaPlayer  />
+     <NotificationContainer />
     </>
   );
 }

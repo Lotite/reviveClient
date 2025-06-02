@@ -22,7 +22,7 @@ export function Tabs({ defaultValue, children, className = "" }: TabsProps) {
 }
 
 export function TabsList({ children, className = "" }: TabsListProps) {
-  return <div className={`flex flex-wrap gap-2 ${className}`}>{children}</div>
+  return <div className={`flex gap-2 ${className}`}>{children}</div>
 }
 
 export function TabsTrigger({
@@ -31,13 +31,14 @@ export function TabsTrigger({
   className = "",
   activeClassName = "bg-background-blue text-white",
   inactiveClassName = "bg-background-medium text-text-medium hover:text-white",
+  onClick
 }: TabsTriggerProps) {
   const { activeTab, setActiveTab } = useTabsContext()
   const isActive = activeTab === value
 
   return (
     <button
-      onClick={() => setActiveTab(value)}
+      onClick={() => { if (onClick) onClick(); setActiveTab(value); }}
       className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${isActive ? activeClassName : inactiveClassName} ${className}`}
     >
       {children}

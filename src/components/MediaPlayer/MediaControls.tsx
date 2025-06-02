@@ -3,6 +3,7 @@ import { FaPause, FaPlay, FaExpand, FaStepForward } from "react-icons/fa";
 import { useEffect, useState, useCallback } from "react";
 import RangeVideo from "./RangeVideo";
 
+
 function formatTime(time: number): string {
   const hours = Math.floor(time / 3600);
   const minutes = Math.floor((time % 3600) / 60);
@@ -19,11 +20,13 @@ export default function   MediaControls({
   expandFunction,
   hasNextEpisode = false,
   opacity=1,
+  showNex = false,
   onNextEpisode,
 }: {
   video: HTMLVideoElement;
   title?: string;
   expandFunction?: () => void;
+  showNex:boolean
   hasNextEpisode?: boolean;
   onNextEpisode?: () => void;
   opacity?:number
@@ -70,7 +73,6 @@ export default function   MediaControls({
       <RangeVideo video={video} />
 
       <div className="flex  flex-row items-center justify-between gap-4 mt-4">
-        {/* Control Buttons */}
         <div className="flex items-center justify-center gap-4 sm:gap-3">
           <button onClick={() => seekBy(-10)} title="Retroceder 10s">
             <MdReplay10 size={28} />
@@ -92,19 +94,18 @@ export default function   MediaControls({
           </button>
         </div>
 
-        {/* Time and title */}
         <div className="text-center sm:text-left text-sm sm:text-base font-mono">
           <span>{formatTime(currentTime)} / {formatTime(duration)}</span>
           <span className="mx-2 hidden sm:inline">•</span>
           <span className="block sm:inline font-semibold">{title}</span>
         </div>
 
-        {/* Right Controls */}
         <div className="flex justify-center sm:justify-end items-center gap-3">
-          {hasNextEpisode && (
+          {showNex && (
             <button
               onClick={onNextEpisode}
-              className="px-3 py-1 text-sm bg-white text-black rounded hover:bg-gray-300 transition"
+              disabled={!hasNextEpisode}
+              className={"px-3 py-1 text-sm   text-black rounded transition " + (hasNextEpisode ? " bg-white hover:bg-gray-300 cursor-pointer" : "bg-white/30") }
             >
               <FaStepForward className="inline mr-1" /> Siguiente
             </button>

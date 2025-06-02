@@ -2,7 +2,6 @@
 
 
 .container{
-    background-image: url("https://picsum.photos/360/640");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -17,6 +16,6 @@
 
 .bg{
     
-    @apply w-full h-full relative m-0 bg-gradient-to-b from-[#0003] from-50% to-black;
+    @apply w-full h-full z-50 absolute top-0 m-0 bg-gradient-to-b from-[#0003] from-50% to-black;
     @apply opacity-0 hover:opacity-100 transition-opacity ;
 }

@@ -39,7 +39,7 @@ export default function RecommendedMedia({
 
 
   return (
-    <div className={`overflow-hidden  ${showBorder ? "border-t border-background-medium pt-6 md:pt-8" : ""} ${className}`}>
+    <div className={`overflow-hidden  ${showBorder ? "border-t border-background-medium pt-6  md:pt-8" : ""} ${className}`}>
       <div className="flex items-center justify-between mb-4 md:mb-6">
         <h3 className="text-lg md:text-xl font-semibold text-white">{title}</h3>
         {currentMedia && (

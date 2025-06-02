@@ -4,5 +4,8 @@ import ServerApi from "../../services/ServerApi";
 
 export default function Home() {
 
-  return (<IndexView request={ServerApi.getHomeRecomentions} />);
+  return (<IndexView 
+    requestRecomendation={ServerApi.getHomeRecomentions} 
+    requestCarousel={()=>ServerApi.getCarouselMedia("")}
+    />);
 }

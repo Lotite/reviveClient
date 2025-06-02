@@ -3,6 +3,8 @@ import { useMediaPlayer } from "../../contexts/MediaPlayerContext";
 import MediaControls from "./MediaControls";
 import Dialog from "../Dialog/Dialog";
 import { AiOutlineClose } from "react-icons/ai";
+import ServerApi from "../../services/ServerApi";
+import { TmediaGallery } from "../../utils/types";
 
 const MediaPlayer = () => {
   const {
@@ -12,17 +14,24 @@ const MediaPlayer = () => {
     expandFunction,
     containerRef,
     setDisplay,
+    playVideo
   } = useMediaPlayer();
 
   const [opacity, setOpacity] = useState<number>(0);
   const hideTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const [nextCap, setNexCap] = useState<boolean>(false);
+  const [showIcon,setShowIcon] = useState(false);
+  const [nextCap, setNexCap] = useState<TmediaGallery|undefined>();
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.currentTime = 0;
-      setNexCap(currentMedia?.type == "serie");
-    }
+    const fetchNextEpisode = async () => {
+      if (videoRef.current) {
+        videoRef.current.currentTime = 0;
+        setShowIcon(currentMedia!.type == "episode");
+        const request = await ServerApi.getNextEpisodie(currentMedia?.id!);
+        setNexCap(request.data);
+      }
+    };
+    fetchNextEpisode();
   }, [currentMedia, videoRef]);
 
   useEffect(() => {
@@ -82,10 +91,14 @@ const MediaPlayer = () => {
         />
         <MediaControls
           video={videoRef.current!}
+          showNex={showIcon}
+          hasNextEpisode={nextCap!=undefined}
           opacity={opacity}
           title={currentMedia.title}
           expandFunction={expandFunction}
-          hasNextEpisode={nextCap}
+         onNextEpisode={()=>{
+          nextCap && playVideo(nextCap)
+         }}
         />
       </div>
     </Dialog>

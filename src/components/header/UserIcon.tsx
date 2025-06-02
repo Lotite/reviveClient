@@ -1,6 +1,8 @@
+import { MdOutlineVideoLibrary } from "react-icons/md"; 
 import { useState, useRef, useEffect } from "react"
 import { FiSettings, FiLogOut } from "react-icons/fi"
 import ServerApi from "../../services/ServerApi"
+import { randomInt } from "../../utils/functions"
 
 interface UserIconProps {
   webLocation: string
@@ -32,7 +34,7 @@ export default function UserIcon({ webLocation }: UserIconProps) {
     }
     checkIfMobile();
     const name = sessionStorage.getItem("name") || "?"
-    setUserInitial(name.charAt(0))
+    setUserInitial(name.charAt(0).toLocaleUpperCase())
     const storageChanged = (event: StorageEvent) => {
       if (event.key === "name") {
         setUserInitial((event.newValue || "?").charAt(0))
@@ -42,7 +44,7 @@ export default function UserIcon({ webLocation }: UserIconProps) {
     const intervalId = setInterval(() => {
       const currentName = sessionStorage.getItem("name") || "?"
       setUserInitial(prev => {
-        const newInitial = currentName.charAt(0)
+        const newInitial = currentName.charAt(0).toLocaleUpperCase()
         return prev !== newInitial ? newInitial : prev
       })
     }, 1000)
@@ -72,7 +74,7 @@ export default function UserIcon({ webLocation }: UserIconProps) {
   return (
     <div className={isMobile ? "absolute bottom-5" : "absolute right-0" } ref={dropdownRef}>
       <div
-        className={`w-10 h-10 text-2xl bg-background-blue rounded-full flex items-center justify-center cursor-pointer ${
+        className={`w-10 h-10 text-2xl bg-background-${["blue","green","orange"][randomInt(0,2)]   } transition-colors duration-700 rounded-full flex items-center justify-center cursor-pointer ${
           isMobile ? "" : "-bottom-5 absolute right-0"
         }`}
         onClick={() => setIsOpen(!isOpen)}
@@ -121,7 +123,10 @@ export default function UserIcon({ webLocation }: UserIconProps) {
             </>
           )}
 
-
+          <a href="/library" className="flex items-center w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+            <MdOutlineVideoLibrary className="w-4 h-4 mr-2" />
+            Biblioteca
+          </a>
           <a href="/settings" className="flex items-center w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
             <FiSettings className="w-4 h-4 mr-2" />
             Ajustes

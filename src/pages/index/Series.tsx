@@ -4,5 +4,8 @@ import ServerApi from "../../services/ServerApi";
 
 export default function Series() {
 
-  return (<IndexView request={ServerApi.getSeriesRecomentions} />);
+  return (<IndexView 
+      requestRecomendation={ServerApi.getSeriesRecomentions} 
+      requestCarousel={() => ServerApi.getCarouselMedia("serie")}
+      />);
 }

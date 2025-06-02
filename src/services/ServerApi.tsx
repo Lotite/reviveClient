@@ -1,4 +1,4 @@
-import { TAccountError, TdevicesList, TerrorFromUser, TinputsValue, TrecomendationMedia, Trequest, TmediaGallery } from "../utils/types";
+import { TAccountError, TdevicesList, TerrorFromUser, TinputsValue, TrecomendationMedia, Trequest, TmediaGallery, TserieInfo } from "../utils/types";
 
 export default class ServerApi{
     static readonly api: string = "http://192.168.1.141:81/api/";
@@ -79,7 +79,7 @@ static async getMoviesRecomentions(){
 }
 
 static async getSeriesRecomentions(){
-    return await ServerApi.sendRequest<Array<TrecomendationMedia>>("seriesN");
+    return await ServerApi.sendRequest<Array<TrecomendationMedia>>("series");
 }
 
 static async updateUser(data: {name?: string; email?: string}): Promise<Trequest<TerrorFromUser>> {
@@ -91,23 +91,23 @@ static async changePassword(data: { currentPassword: string; newPassword: string
   }
 
 static async getUserDevices(): Promise<Trequest<TdevicesList>> {
-    return await this.sendRequest("getUserDevices", undefined, "POST");
+    return await this.sendRequest("getUserDevices", undefined);
 }
 
 static async deleteDevice(deviceId: string): Promise<Trequest<null>> {
-    return await this.sendRequest("deleteDevice", { id: deviceId }, "POST");
+    return await this.sendRequest("deleteDevice", { id: deviceId });
 }
 
 static async deleteOtherDevices(): Promise<Trequest<null>> {
-    return await this.sendRequest("deleteOtherDevices", undefined, "POST");
+    return await this.sendRequest("deleteOtherDevices", undefined);
 }
 
 static async deleteUser(): Promise<Trequest<null>> {
-    return await this.sendRequest("deleteUser", undefined, "POST");
+    return await this.sendRequest("deleteUser", undefined);
 }
 
 static async logout(): Promise<Trequest<null>> {
-    return await this.sendRequest("logout", undefined, "POST");
+    return await this.sendRequest("logout", undefined);
 }
 
 static async getRecommendedMedia(media_id: string, quantity: string): Promise<Trequest<Array<TmediaGallery>>> {
@@ -116,6 +116,33 @@ static async getRecommendedMedia(media_id: string, quantity: string): Promise<Tr
 
 static async searchMedia(name: string): Promise<Trequest<Array<TmediaGallery>>> {
     return await this.sendRequest("search", { name });
+}
+
+static async getSeasonsAndEpisodes(media_id: number): Promise<Trequest<TserieInfo>> {
+    return await this.sendRequest<TserieInfo>("seasonsAndEpisodes", { media_id });
+}
+
+static async getCarouselMedia(type:string = ""){
+    return await this.sendRequest<Array<TmediaGallery>>("carousel", { type });
+}
+static async getNextEpisodie(media_id:number){
+    return await this.sendRequest< TmediaGallery>("hasContinuation", { media_id });
+}
+
+static async saveMediaToList(media_id: number): Promise<Trequest<[]>> {
+    return await this.sendRequest("saveMediaToList", { media_id});
+}
+
+static async deleteMediaFromList(media_id: number): Promise<Trequest<[]>> {
+    return await this.sendRequest("deleteMediaFromList", { media_id });
+}
+
+static async isMediaInUserList(media_id: number): Promise<Trequest<{ exist: boolean }>> {
+    return await this.sendRequest("isMediaInUserList", { media_id });
+}
+
+static async getUserList(): Promise<Trequest<Array<TmediaGallery>>> {
+    return await this.sendRequest<Array<TmediaGallery>>("getUserList");
 }
 
 }

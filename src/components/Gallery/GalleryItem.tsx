@@ -2,18 +2,20 @@ import { AiFillStar } from "react-icons/ai";
 import { TmediaGallery } from "../../utils/types";
 import style from "./gallery.module.css";
 import { useDialogGallery } from "../../contexts/DialogGalleryContext";
+import Image from "../Image/Image";
 
 export default function GalleryItem({ media }: { media: TmediaGallery }) { 
   const { openDialog } = useDialogGallery();
 
   return (
     <div
-      className={`${style.container} aspect-Portada group`}
-      style={{ backgroundImage: `url(${media.portada})` }}
+      className={`${style.container} relative group aspect-Portada`}
+      
       onClick={() => {
         openDialog(media); 
       }}
     >
+      <Image className="w-full h-full absolute object-cover"    src={media.portada} />
       <div className={style.bg}>
         <div className=" absolute px-2 bottom-5 w-full">
           <h3 className="pl-2">{media.title}</h3>

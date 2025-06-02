@@ -112,7 +112,7 @@ export type TmediaGallery = {
   reseña: number;
   date: string;
   number: number;
-  type: "movie" | "serie" | "season" | "episodie";
+  type: "movie" | "serie" | "season" | "episode";
   duracion?: number;
   clasificaion?: number;
   generos?: Array<string>;
@@ -189,7 +189,8 @@ export type TabsTriggerProps = {
   children: React.ReactNode
   className?: string
   activeClassName?: string
-  inactiveClassName?: string
+  inactiveClassName?: string,
+  onClick?: () => void
 }
 
 export type TabsContentProps = {
@@ -285,4 +286,16 @@ export type Step3PasswordProps = {
   handleResetPassword: () => Promise<void>;
   isLoading: boolean;
   errors: { [key: string]: string };
+}
+
+export type TserieInfo = Array<Tseason> | [] | undefined
+
+export type Tseason = {
+  season:TmediaGallery,
+  episodes:Array<TmediaGallery> | []
+}
+
+export type IndexViewProps = {
+  requestRecomendation: () => Promise<Trequest<Array<TrecomendationMedia>>>;
+  requestCarousel: () => Promise<Trequest<Array<TmediaGallery>>>;
 }
