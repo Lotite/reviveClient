@@ -19,8 +19,9 @@ const MediaPlayer = () => {
 
   const [opacity, setOpacity] = useState<number>(0);
   const hideTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const [showIcon,setShowIcon] = useState(false);
-  const [nextCap, setNexCap] = useState<TmediaGallery|undefined>();
+  const [showIcon, setShowIcon] = useState(false);
+  const [nextCap, setNexCap] = useState<TmediaGallery | undefined>();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchNextEpisode = async () => {
@@ -85,10 +86,18 @@ const MediaPlayer = () => {
         </button>
         <video
           ref={videoRef}
-          src={currentMedia.url || "http://192.168.1.141:81/media/video.mp4"}
+          src={currentMedia.url}
           className="w-full h-full object-contain"
           autoPlay
+          onWaiting={() => setIsLoading(true)}
+          onLoadedData={() => setIsLoading(false)}
+          onError={() => setIsLoading(false)}
         />
+        {isLoading && (
+          <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-black/50">
+            <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-white"></div>
+          </div>
+        )}
         <MediaControls
           video={videoRef.current!}
           showNex={showIcon}

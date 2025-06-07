@@ -17,7 +17,7 @@ export function DialogSave() {
   }, []);
 
   return (
-    <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-7 xl:grid-cols-8 gap-4">
+    <div className="grid grid-cols-4 px-4cc px-5 py-2 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-7 xl:grid-cols-8 gap-4">
       {medias.map((media, index) => (
         <GalleryItem key={index} media={media} />
       ))}

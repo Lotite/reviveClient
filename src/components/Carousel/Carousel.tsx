@@ -86,12 +86,6 @@ export default function Carousel({ medias }: { medias: Array<TmediaGallery> }) {
             {new Date(media?.date!).getFullYear()}
           </span>
         </div>
-        <p
-          className="text-text-medium max-w-[200px]"
-          style={{ position: "relative", zIndex: 2 }}
-        >
-          {media.description}
-        </p>
       </div>
     );
   }
