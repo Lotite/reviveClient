@@ -163,7 +163,7 @@ export default function DialogGallery({
             </Button>
           </div>
 
-          <p className="text-text-medium">{selectedMedia?.description}</p>
+          <p className="text-text-medium p-5">{selectedMedia?.description}</p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
