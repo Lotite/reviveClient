@@ -10,6 +10,15 @@
     --color-info: #3b82f6;
 }
 
+.text-main-gradient {
+    color:  #eed8c8; /* Blanco para el centro del texto */
+  text-shadow:
+    0 0 7px var(--color-text-orange), /* Azul vibrante para el neón */
+    0 0 15px var(--color-text-orange),
+    0 0 30px var(--color-text-orange),
+    0 0 45px var(--color-text-orange),
+    0 0 60px var(--color-text-orange);
+}
 @theme{
     --color-text-orange: #f97316;
     --color-text-blue: #22d3ee;
@@ -95,4 +104,3 @@
     --color-background-active-medium: #202b3d;
     --color-background-active-medium2: #3a4a66;
 }
-
