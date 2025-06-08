@@ -32,6 +32,7 @@ export default function DialogGallery({
     season: "episodios",
     episode: "minutos",
   };
+  
   const [serieInfo, setSerieInfo] = useState<TserieInfo>([]);
   const [isSaved, setSaved] = useState(false);
 
@@ -108,6 +109,7 @@ export default function DialogGallery({
       onClose={onClose}
       scroll={true}
     >
+      
       <button
         className="absolute top-3 right-3 text-text-white z-10 rounded-full bg-black hover:bg-black/80 cursor-pointer bg-opacity-50 p-1"
         onClick={onClose}

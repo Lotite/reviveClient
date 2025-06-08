@@ -35,6 +35,33 @@ const MediaPlayer = () => {
     fetchNextEpisode();
   }, [currentMedia, videoRef]);
 
+  const checkBufferAndSetLoading = () => {
+    if (videoRef.current) {
+      const video = videoRef.current;
+      const currentTime = video.currentTime;
+      const buffered = video.buffered;
+      let isBuffered = false;
+      for (let i = 0; i < buffered.length; i++) {
+        if (currentTime >= buffered.start(i) && currentTime <= buffered.end(i)) {
+          isBuffered = true;
+          break;
+        }
+      }
+      if (isLoading && isBuffered) {
+        setIsLoading(false);
+      } else if (!isLoading && !isBuffered) {
+        setIsLoading(true);
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (isLoading) {
+      checkBufferAndSetLoading();
+    }
+  }, [isLoading]);
+
+
   useEffect(() => {
     if (!currentMedia) return;
 
@@ -76,6 +103,7 @@ const MediaPlayer = () => {
           onClick={() => {
             setDisplay("hidden");
           }}
+          title="Close"
           className={`z-50 size-8 absolute top-4 right-4 bg-black/70 text-white rounded-full flex items-center justify-center
             transition-all duration-300 ease-in-out
             hover:bg-white/20 hover:scale-105
@@ -92,6 +120,15 @@ const MediaPlayer = () => {
           onWaiting={() => setIsLoading(true)}
           onLoadedData={() => setIsLoading(false)}
           onError={() => setIsLoading(false)}
+          onPause={() => {
+            checkBufferAndSetLoading();
+          }}
+          onPlay={() => {
+            checkBufferAndSetLoading();
+          }}
+          onPlaying={() => {
+            checkBufferAndSetLoading();
+          }}
         />
         {isLoading && (
           <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-black/50">

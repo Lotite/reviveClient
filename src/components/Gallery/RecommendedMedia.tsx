@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import type { recommendedMedia, TmediaGallery } from "../../utils/types"
 import GalleryItem from "./GalleryItem"
 import ServerApi from "../../services/ServerApi"
+import { randomInt } from "../../utils/functions"
 
 
 export default function RecommendedMedia({
@@ -59,13 +60,10 @@ export default function RecommendedMedia({
       ) : (
         <>
           <div className={`grid ${gridCols} gap-3 md:gap-4`}>
-            {recommendedMedia.map((media, index) => (
+            {recommendedMedia.map(media => (
               <div
-                key={media.id}
+                key={media.id  * randomInt(100)}
                 className="transform transition-all duration-300 hover:scale-105 hover:z-10"
-                style={{
-                  animationDelay: `${index * 50}ms`,
-                }}
               >
                 <GalleryItem media={media}  />
               </div>

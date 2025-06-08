@@ -36,8 +36,7 @@ function DialogGalleryRenderer() {
 
 
 function App() {
-  const { isLoading, showLoading, hideLoading, setSessionValidated } =
-    useLoading();
+  const { isLoading, showLoading, hideLoading, setSessionValidated } = useLoading();
 
   useEffect(() => {
     if (isLoading) {

@@ -2,6 +2,8 @@
 @import "./config/styleColors.css";
 @import "./config/styleFont.css";
 @import "./config/styleClass.css";
+
+
 html, body {
     height: 100%; 
     margin: 0;

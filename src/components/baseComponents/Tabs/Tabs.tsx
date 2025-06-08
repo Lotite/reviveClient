@@ -3,6 +3,7 @@ import { TabsContextType, TabsProps, TabsListProps, TabsTriggerProps, TabsConten
 
 
 const TabsContext = createContext<TabsContextType | undefined>(undefined)
+
 function useTabsContext() {
   const context = useContext(TabsContext)
   if (!context) {
