@@ -3,7 +3,9 @@ import { TAccountError, TdevicesList, TerrorFromUser, TinputsValue, Trecomendati
 
 
 export default class ServerApi{
-    static readonly api: string = "https://api.revivestreem.site/api/";
+    static readonly dominionServer = "https://api.revivestreem.site/api/";
+    static readonly localHost = "http://localhost:81/api/";
+    static readonly api: string = this.localHost;
 
   
 

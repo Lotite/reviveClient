@@ -6,7 +6,7 @@ import style from "./Carousel.module.css";
 import { Button } from "../baseComponents/Button/Button";
 import { TmediaItem } from "../../utils/types";
 import { useEffect, useState } from "react";
-import { setBackgroundColor } from "../../utils/functions";
+import { getTypeColor, setBackgroundColor } from "../../utils/functions";
 import { useDialogGallery } from "../../contexts/DialogGalleryContext";
 
 export default function Carousel({ medias }: { medias: Array<TmediaItem> }) {
@@ -14,7 +14,7 @@ export default function Carousel({ medias }: { medias: Array<TmediaItem> }) {
   let intervalChange: number;
 
   const { openDialog } = useDialogGallery();
-
+  
   useEffect(()=>{
     changePosition(1);
   },[medias])
@@ -47,6 +47,7 @@ export default function Carousel({ medias }: { medias: Array<TmediaItem> }) {
   }
 
   function newImageContainer(media: TmediaItem, pos: number) {
+    const color = getTypeColor(media.type);
     return (
       <div
         key={pos}
@@ -69,7 +70,7 @@ export default function Carousel({ medias }: { medias: Array<TmediaItem> }) {
           }}
         ></div>
         <div style={{ position: "relative", zIndex: 2, padding: "1rem" }}>
-          <span className="bg-background-orange mr-3 py-1 px-2 rounded">
+          <span className={`bg-background-${color} mr-3 py-1 px-2 rounded`}>
             Tendencia
           </span>
         </div>
@@ -135,7 +136,7 @@ export default function Carousel({ medias }: { medias: Array<TmediaItem> }) {
       <div className="absolute flex w-100 bottom-10 left-2">
        <Button
           className="flex w-40 items-center justify-center mx-2 px-1 py-1 sm:px-2 sm:py-2"
-          color="orange"
+          color="green"
            onclick={() => {
             openDialog(medias[position]);
           }}

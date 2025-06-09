@@ -78,6 +78,34 @@ export function validateInput(input: HTMLInputElement, type?: ToptionsInput): Va
 }
 
 
+export function getLocaltionColor():"blue"|"green"|"orange"{
+  switch(location.href){
+    case "movies":
+      return "orange"
+    break;
+    case "series":
+    return "blue"
+    break;
+    default: return "green" ;
+  }
+}
+
+
+export function getTypeColor(type:string):"blue"|"green"|"orange"{
+   switch(type){
+    case "movie":
+      return "orange"
+    break;
+    case "serie":
+    return "blue"
+    break;
+    default: return "green" ;
+  }
+
+  return "green";
+
+}
+
 
 export function validateForm(inputs: TinputElements): { isValid: boolean; errors: TerrorFromUser } {
   const errors: TerrorFromUser = {};
