@@ -74,13 +74,13 @@ export default function   MediaControls({
 
       <div className="flex  flex-row items-center justify-between gap-4 mt-4">
         <div className="flex items-center justify-center gap-4 sm:gap-3">
-          <button onClick={() => seekBy(-10)} title="Retroceder 10s">
+          <button className="cursor-pointer" onClick={() => seekBy(-10)} title="Retroceder 10s">
             <MdReplay10 size={28} />
           </button>
 
-          <button onClick={togglePlay} className="relative w-7 h-7">
+          <button onClick={togglePlay} className="relative w-7 h-7 cursor-pointer">
             <FaPause
-              className={`absolute top-0 left-0 transition-opacity duration-300 ${isPlaying ? "opacity-100" : "opacity-0"}`}
+              className={`absolute top-0 left-0 transition-opacity  duration-300 ${isPlaying ? "opacity-100" : "opacity-0"}`}
               size={26}
             />
             <FaPlay
@@ -89,7 +89,7 @@ export default function   MediaControls({
             />
           </button>
 
-          <button onClick={() => seekBy(10)} title="Avanzar 10s">
+          <button className="cursor-pointer" onClick={() => seekBy(10)} title="Avanzar 10s">
             <MdForward10 size={28} />
           </button>
         </div>
@@ -100,7 +100,7 @@ export default function   MediaControls({
           <span className="block sm:inline font-semibold">{title}</span>
         </div>
 
-        <div className="flex justify-center sm:justify-end items-center gap-3">
+        <div className="flex justify-center sm:justify-end items-center gap-3 ">
           {showNex && (
             <button
               onClick={onNextEpisode}
@@ -110,7 +110,7 @@ export default function   MediaControls({
               <FaStepForward className="inline mr-1" /> Siguiente
             </button>
           )}
-          <button onClick={expandFunction} title="Pantalla completa">
+          <button className="cursor-pointer" onClick={expandFunction} title="Pantalla completa">
             <FaExpand size={20} />
           </button>
         </div>
