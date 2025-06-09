@@ -1,19 +1,27 @@
-@theme {
-    --font-family-Title: 'Montserrat', sans-serif;
+/* src/config/styleFont.css */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@400;500&display=swap');
+
+:root {
+  --font-montserrat: 'Montserrat', sans-serif;
+  --font-roboto: 'Roboto', sans-serif;
+
+  /* Títulos: Montserrat, 30px, negrita */
+  --font-title-family: var(--font-montserrat);
+  --font-title-size: 30px;
+  --font-title-weight: 700; /* bold */
+
+  /* Subtítulos: Montserrat, 24px, semi negrita */
+  --font-subtitle-family: var(--font-montserrat);
+  --font-subtitle-size: 24px;
+  --font-subtitle-weight: 600; /* semi-bold */
+
+  /* Cuerpo: Roboto, 16px, regular */
+  --font-body-family: var(--font-roboto);
+  --font-body-size: 16px;
+  --font-body-weight: 400; /* regular */
+
+  /* Enlaces: Roboto, 16px, semi negrita */
+  --font-link-family: var(--font-roboto);
+  --font-link-size: 16px;
+  --font-link-weight: 500; /* medium / semi-bold */
 }
-
-.title {
-    font-family: var(--font-family-Title);
-    font-size: 30px;
-    font-weight: 700; 
-}
-
-.font-Body {
-    font-family: var(--font-family-Body);
-    font-size: 16px;
-    font-weight: 400; 
-}
-
-
-
-

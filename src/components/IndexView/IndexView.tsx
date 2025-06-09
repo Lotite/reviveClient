@@ -45,7 +45,7 @@ export default function IndexView({ requestRecomendation, requestCarousel }: Ind
           />
         ))}
       </div>
-       <footer className="bg-[#121827] text-[#ccc3cf] py-10 mt-12 border-t border-[#374151]">
+<footer className="bg-[#121827] text-[#ccc3cf] py-10 mt-12 border-t border-[#374151] footer">
       <div className="flex flex-wrap justify-around max-w-6xl mx-auto gap-5">
         <div className="flex-1 min-w-[180px] mb-5">
           <h3 className="text-[#f97316] mb-4 text-xl">Revive</h3>

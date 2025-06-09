@@ -278,7 +278,7 @@ const Recover: React.FC = () => {
           )}
 
           {/* footer */}
-          <div className="flex items-center justify-between mt-6 pt-4 border-t border-background-medium2">
+<div className="flex items-center justify-between mt-6 pt-4 border-t border-background-medium2 footer">
             <a href="/login" className="text-sm text-main-blue hover:text-blue-400 transition-colors">
               Volver al login
             </a>

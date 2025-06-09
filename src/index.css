@@ -3,6 +3,44 @@
 @import "./config/styleFont.css";
 @import "./config/styleClass.css";
 
+h1, h2 {
+  font-family: var(--font-title-family);
+  font-size: var(--font-title-size);
+  font-weight: var(--font-title-weight);
+}
+
+.movie-title, .series-title {
+  font-family: var(--font-title-family);
+}
+
+.section-title {
+  font-family: var(--font-title-family);
+}
+
+.description-text {
+  font-family: var(--font-body-family);
+  font-size: var(--font-body-size);
+  font-weight: var(--font-body-weight);
+}
+
+nav {
+  font-family: var(--font-link-family);
+  font-size: var(--font-link-size);
+  font-weight: var(--font-link-weight);
+}
+
+.user-info {
+  font-family: var(--font-body-family);
+  font-size: var(--font-body-size);
+  font-weight: var(--font-body-weight);
+}
+
+footer {
+  font-family: var(--font-body-family);
+  font-size: var(--font-body-size);
+  font-weight: var(--font-body-weight);
+}
+
 
 html, body {
     height: 100%; 

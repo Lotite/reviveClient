@@ -24,7 +24,7 @@ export default function NavLoged() {
   }
 
   return (
-    <nav className="px-3 md:px-5 flex flex-row items-center justify-between w-full">
+<nav className="px-3 md:px-5 flex flex-row items-center justify-between w-full nav">
       <div className="flex items-center">
         <a href="/"  className="text-2xl md:text-4xl text-main-gradient">Revive</a>
       </div>
