@@ -1,7 +1,7 @@
 import type React from "react";
 import { useState, useRef, useEffect } from "react";
 import { AiOutlineSearch, AiOutlineClose } from "react-icons/ai";
-import type { TmediaGallery } from "../../../utils/types";
+import type { TmediaItem } from "../../../utils/types";
 import GlitchText from "../../baseComponents/glithText/GlitchText";
 import Dialog from "../../Dialog/Dialog";
 import GalleryItem from "../../Gallery/GalleryItem";
@@ -10,7 +10,7 @@ import ServerApi from "../../../services/ServerApi";
 interface DialogSearchProps {
   dialogState: "flex" | "hidden";
   onClose: () => void;
-  dialogCall?: (media: TmediaGallery) => void;
+  dialogCall?: (media: TmediaItem) => void;
 }
 
 export default function DialogSearch({
@@ -18,7 +18,7 @@ export default function DialogSearch({
   onClose,
 }: DialogSearchProps) {
   const [searchQuery, setSearchQuery] = useState("");
-  const [searchResults, setSearchResults] = useState<TmediaGallery[]>([]);
+  const [searchResults, setSearchResults] = useState<TmediaItem[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 

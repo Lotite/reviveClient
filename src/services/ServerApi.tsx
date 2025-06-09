@@ -1,7 +1,11 @@
-import { TAccountError, TdevicesList, TerrorFromUser, TinputsValue, TrecomendationMedia, Trequest, TmediaGallery, TserieInfo } from "../utils/types";
+import { TAccountError, TdevicesList, TerrorFromUser, TinputsValue, TrecomendationMedia, Trequest, TmediaItem, TserieInfo } from "../utils/types";
+
+
 
 export default class ServerApi{
-    static readonly api: string = "http://192.168.1.141:81/api/";
+    static readonly api: string = "https://api.revivestreem.site/api/";
+
+  
 
 static async sendRequest<T>(path: string, body?: any , method:"POST"|"GET" = "POST"): Promise<Trequest<T>> {
     const options: RequestInit = {
@@ -110,11 +114,11 @@ static async logout(): Promise<Trequest<null>> {
     return await this.sendRequest("logout", undefined);
 }
 
-static async getRecommendedMedia(media_id: string, quantity: string): Promise<Trequest<Array<TmediaGallery>>> {
+static async getRecommendedMedia(media_id: string, quantity: string): Promise<Trequest<Array<TmediaItem>>> {
     return await this.sendRequest("recommendateSimilar", { media_id, quantity });
 }
 
-static async searchMedia(name: string): Promise<Trequest<Array<TmediaGallery>>> {
+static async searchMedia(name: string): Promise<Trequest<Array<TmediaItem>>> {
     return await this.sendRequest("search", { name });
 }
 
@@ -123,10 +127,10 @@ static async getSeasonsAndEpisodes(media_id: number): Promise<Trequest<TserieInf
 }
 
 static async getCarouselMedia(type:string = ""){
-    return await this.sendRequest<Array<TmediaGallery>>("carousel", { type });
+    return await this.sendRequest<Array<TmediaItem>>("carousel", { type });
 }
 static async getNextEpisodie(media_id:number){
-    return await this.sendRequest< TmediaGallery>("hasContinuation", { media_id });
+    return await this.sendRequest< TmediaItem>("hasContinuation", { media_id });
 }
 
 static async saveMediaToList(media_id: number): Promise<Trequest<[]>> {
@@ -141,8 +145,8 @@ static async isMediaInUserList(media_id: number): Promise<Trequest<{ exist: bool
     return await this.sendRequest("isMediaInUserList", { media_id });
 }
 
-static async getUserList(): Promise<Trequest<Array<TmediaGallery>>> {
-    return await this.sendRequest<Array<TmediaGallery>>("getUserList");
+static async getUserList(): Promise<Trequest<Array<TmediaItem>>> {
+    return await this.sendRequest<Array<TmediaItem>>("getUserList");
 }
 
 }

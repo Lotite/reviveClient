@@ -102,8 +102,8 @@ export type TtailwindColors = {
     | "info";
   background: "blue" | "orange" | "green" | "dark" | "medium" | "medium2";
 };
-
-export type TmediaGallery = {
+ 
+export type TmediaItem = {
   id: number;
   title: string;
   portada: string;
@@ -139,7 +139,7 @@ export type Tgenero = {
 };
 
 export type TrecomendationMedia = {
-  medias: Array<TmediaGallery>;
+  medias: Array<TmediaItem>;
   genero: Tgenero;
 };
 
@@ -252,7 +252,7 @@ export type NotificationItemProps = {
 
 export type recommendedMedia = {
   title?: string
-  currentMedia?: TmediaGallery
+  currentMedia?: TmediaItem
   itemCount?: number
   className?: string
   gridCols?: string
@@ -291,11 +291,11 @@ export type Step3PasswordProps = {
 export type TserieInfo = Array<Tseason> | [] | undefined
 
 export type Tseason = {
-  season:TmediaGallery,
-  episodes:Array<TmediaGallery> | []
+  season:TmediaItem,
+  episodes:Array<TmediaItem> | []
 }
 
 export type IndexViewProps = {
   requestRecomendation: () => Promise<Trequest<Array<TrecomendationMedia>>>;
-  requestCarousel: () => Promise<Trequest<Array<TmediaGallery>>>;
+  requestCarousel: () => Promise<Trequest<Array<TmediaItem>>>;
 }

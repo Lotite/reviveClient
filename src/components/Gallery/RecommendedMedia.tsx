@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import type { recommendedMedia, TmediaGallery } from "../../utils/types"
+import type { recommendedMedia, TmediaItem } from "../../utils/types"
 import GalleryItem from "./GalleryItem"
 import ServerApi from "../../services/ServerApi"
 import { randomInt } from "../../utils/functions"
@@ -13,7 +13,7 @@ export default function RecommendedMedia({
   gridCols = "grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-8",
   showBorder = false,
 }: recommendedMedia) {
-  const [recommendedMedia, setRecommendedMedia] = useState<TmediaGallery[]>([])
+  const [recommendedMedia, setRecommendedMedia] = useState<TmediaItem[]>([])
   const [isLoading, setIsLoading] = useState(true)
 
 

@@ -36,19 +36,17 @@ function DialogGalleryRenderer() {
 
 
 function App() {
-  const { isLoading, showLoading, hideLoading, setSessionValidated } = useLoading();
+  const {  showLoading, hideLoading, setSessionValidated } = useLoading();
 
   useEffect(() => {
-    if (isLoading) {
-      redirect();
-    }
+    redirect();
     const isDesktop = isDesktopDevice();
     if (isDesktop) {
       import("./config/styleDesktop.css");
     } else {
       import("./config/styleMobile.css");
     }
-  }, [location]);
+  }, []);
 
   async function redirect() {
     showLoading();

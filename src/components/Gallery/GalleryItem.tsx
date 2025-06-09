@@ -1,10 +1,10 @@
 import { AiFillStar } from "react-icons/ai";
-import { TmediaGallery } from "../../utils/types";
+import { TmediaItem } from "../../utils/types";
 import style from "./gallery.module.css";
 import { useDialogGallery } from "../../contexts/DialogGalleryContext";
 import Image from "../Image/Image";
 
-export default function GalleryItem({ media }: { media: TmediaGallery }) { 
+export default function GalleryItem({ media }: { media: TmediaItem }) { 
   const { openDialog } = useDialogGallery();
 
   return (

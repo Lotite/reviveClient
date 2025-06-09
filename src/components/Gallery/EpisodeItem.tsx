@@ -1,8 +1,8 @@
-import { TmediaGallery } from "../../utils/types";
+import { TmediaItem } from "../../utils/types";
 import { useMediaPlayer } from "../../contexts/MediaPlayerContext";
 import Image from "../Image/Image";
 
-export function EpisodeItem({ episode }: { episode: TmediaGallery }) {
+export function EpisodeItem({ episode }: { episode: TmediaItem }) {
 
 
  const { playVideo  } = useMediaPlayer();

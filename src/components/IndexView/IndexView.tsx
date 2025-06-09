@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { IndexViewProps, TmediaGallery, TrecomendationMedia } from "../../utils/types";
+import { IndexViewProps, TmediaItem, TrecomendationMedia } from "../../utils/types";
 import Carousel from "../Carousel/Carousel";
 import Gallery from "../Gallery/Gallery";
 import { useLoading } from "../../contexts/LoadingContext";
@@ -11,7 +11,7 @@ export default function IndexView({ requestRecomendation, requestCarousel }: Ind
   const { hideLoading, sessionValidated } = useLoading();
 
   const [recomentions, setRecomentions] = useState<Array<TrecomendationMedia>>([]);
-  const [carouselMedia, setCarouseMedia] = useState<Array<TmediaGallery>>([]);
+  const [carouselMedia, setCarouseMedia] = useState<Array<TmediaItem>>([]);
 
   useEffect(() => {
     async function fetchRecomentions() {

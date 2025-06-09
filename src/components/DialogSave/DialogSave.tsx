@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import ServerApi from "../../services/ServerApi";
-import { TmediaGallery } from "../../utils/types";
+import { TmediaItem } from "../../utils/types";
 import GalleryItem from "../Gallery/GalleryItem";
 
 export function DialogSave() {
-  const [medias, setMedias] = useState<Array<TmediaGallery>>([]);
+  const [medias, setMedias] = useState<Array<TmediaItem>>([]);
   useEffect(() => {
     const getMedia = async () => {
       const request = await ServerApi.getUserList();

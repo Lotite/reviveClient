@@ -4,7 +4,7 @@ import MediaControls from "./MediaControls";
 import Dialog from "../Dialog/Dialog";
 import { AiOutlineClose } from "react-icons/ai";
 import ServerApi from "../../services/ServerApi";
-import { TmediaGallery } from "../../utils/types";
+import { TmediaItem } from "../../utils/types";
 
 const MediaPlayer = () => {
   const {
@@ -20,7 +20,7 @@ const MediaPlayer = () => {
   const [opacity, setOpacity] = useState<number>(0);
   const hideTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [showIcon, setShowIcon] = useState(false);
-  const [nextCap, setNexCap] = useState<TmediaGallery | undefined>();
+  const [nextCap, setNexCap] = useState<TmediaItem | undefined>();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -49,7 +49,7 @@ const MediaPlayer = () => {
       }
       if (isLoading && isBuffered) {
         setIsLoading(false);
-      } else if (!isLoading && !isBuffered) {
+      } else  {
         setIsLoading(true);
       }
     }

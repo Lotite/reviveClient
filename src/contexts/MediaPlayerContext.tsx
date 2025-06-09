@@ -5,7 +5,7 @@ import React, {
   useRef,
   useContext,
 } from "react";
-import { TmediaGallery } from "../utils/types";
+import { TmediaItem } from "../utils/types";
 
 interface MediaPlayerContextProps {
   videoRef: React.RefObject<HTMLVideoElement | null>;
@@ -14,8 +14,8 @@ interface MediaPlayerContextProps {
   setOpacity: React.Dispatch<React.SetStateAction<number>>;
   display: "flex" | "hidden";
   setDisplay: React.Dispatch<React.SetStateAction<"flex" | "hidden">>;
-  currentMedia?: TmediaGallery;
-  playVideo: (media: TmediaGallery) => void;
+  currentMedia?: TmediaItem;
+  playVideo: (media: TmediaItem) => void;
   stopVideo: () => void;
   expandFunction: () => void;
 }
@@ -27,9 +27,9 @@ export const MediaPlayerProvider = ({ children }: { children: React.ReactNode })
   const containerRef = useRef<HTMLDivElement>(null);
   const [opacity, setOpacity] = useState<number>(100);
   const [display, setDisplay] = useState<"flex" | "hidden">("hidden");
-  const [currentMedia, setCurrentMedia] = useState<TmediaGallery>();
+  const [currentMedia, setCurrentMedia] = useState<TmediaItem>();
 
-  const playVideo = useCallback((media: TmediaGallery) => {
+  const playVideo = useCallback((media: TmediaItem) => {
     setCurrentMedia(media);
     setDisplay("flex");
     setTimeout(() => {

@@ -2,7 +2,7 @@ import { AiOutlineSearch } from "react-icons/ai"
 import { useState } from "react"
 import Usericon from "./UserIcon"
 import DialogSearch from "./Search/DialogSearch"
-import { TmediaGallery } from "../../utils/types"
+import { TmediaItem } from "../../utils/types"
 
 
 export default function NavLoged() {
@@ -18,7 +18,7 @@ export default function NavLoged() {
     setDialogState("hidden")
   }
 
-  const handleMediaSelect = (media: TmediaGallery) => {
+  const handleMediaSelect = (media: TmediaItem) => {
     console.log("Media seleccionado:", media)
     closeDialog()
   }

@@ -7,7 +7,7 @@ import {
 import { BiPlay } from "react-icons/bi";
 import { CiClock2 } from "react-icons/ci";
 import { SlBadge } from "react-icons/sl";
-import { TmediaGallery, TserieInfo } from "../../utils/types";
+import {  TmediaItem, TserieInfo } from "../../utils/types";
 import { Button } from "../baseComponents/Button/Button";
 import Dialog from "../Dialog/Dialog";
 import RecommendedMedia from "./RecommendedMedia";
@@ -23,7 +23,7 @@ export default function DialogGallery({
   onClose,
 }: {
   dialogState: "flex" | "hidden";
-  selectedMedia?: TmediaGallery;
+  selectedMedia?: TmediaItem;
   onClose: () => void;
 }) {
   const strDuracion = {
@@ -224,7 +224,7 @@ export default function DialogGallery({
                     </span>
                     <span className="text-sm text-text-white">
                       {selectedMedia?.duracion}{" "}
-                      {strDuracion[selectedMedia?.type!]}
+                      {strDuracion[selectedMedia?.type! as keyof typeof strDuracion]}
                     </span>
                   </div>
                 </div>

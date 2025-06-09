@@ -1,10 +1,10 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
-import { TmediaGallery } from '../utils/types';
+import { TmediaItem } from '../utils/types';
 
 interface DialogGalleryContextType {
   dialogState: "flex" | "hidden";
-  selectedMedia?: TmediaGallery;
-  openDialog: (media: TmediaGallery) => void;
+  selectedMedia?: TmediaItem;
+  openDialog: (media: TmediaItem) => void;
   closeDialog: () => void;
 }
 
@@ -12,9 +12,9 @@ const DialogGalleryContext = createContext<DialogGalleryContextType | undefined>
 
 export const DialogGalleryProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [dialogState, setDialogState] = useState<"flex" | "hidden">("hidden");
-  const [selectedMedia, setSelectedMedia] = useState<TmediaGallery | undefined>(undefined);
+  const [selectedMedia, setSelectedMedia] = useState<TmediaItem | undefined>(undefined);
 
-  const openDialog = (media: TmediaGallery) => {
+  const openDialog = (media: TmediaItem) => {
     setSelectedMedia(media);
     setDialogState("flex");
   };

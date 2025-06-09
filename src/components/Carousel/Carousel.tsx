@@ -4,12 +4,12 @@ import { BiPlay } from "react-icons/bi";
 import { AiFillStar } from "react-icons/ai";
 import style from "./Carousel.module.css";
 import { Button } from "../baseComponents/Button/Button";
-import { TmediaGallery } from "../../utils/types";
+import { TmediaItem } from "../../utils/types";
 import { useEffect, useState } from "react";
 import { setBackgroundColor } from "../../utils/functions";
 import { useDialogGallery } from "../../contexts/DialogGalleryContext";
 
-export default function Carousel({ medias }: { medias: Array<TmediaGallery> }) {
+export default function Carousel({ medias }: { medias: Array<TmediaItem> }) {
   const [position, setPosition] = useState<number>(0);
   let intervalChange: number;
 
@@ -46,7 +46,7 @@ export default function Carousel({ medias }: { medias: Array<TmediaGallery> }) {
     }
   }
 
-  function newImageContainer(media: TmediaGallery, pos: number) {
+  function newImageContainer(media: TmediaItem, pos: number) {
     return (
       <div
         key={pos}
