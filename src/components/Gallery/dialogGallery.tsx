@@ -16,6 +16,7 @@ import { useEffect, useState } from "react";
 import ServerApi from "../../services/ServerApi";
 import { SerieTabs } from "./SerieTabs";
 import { useNotification } from "../../contexts/NotificationContext";
+import { getTypeColor } from "../../utils/functions";
 
 export default function DialogGallery({
   dialogState,
@@ -35,8 +36,10 @@ export default function DialogGallery({
   
   const [serieInfo, setSerieInfo] = useState<TserieInfo>([]);
   const [isSaved, setSaved] = useState(false);
+  const [color, setColor] = useState(getTypeColor(selectedMedia?.type!));
 
   useEffect(() => {
+    setColor(getTypeColor(selectedMedia?.type!));
     const fetchSeasonsAndEpisodes = async () => {
       setSaved(false);
       setSerieInfo(undefined);
@@ -138,7 +141,7 @@ export default function DialogGallery({
           <div className="w-full flex flex-row">
             <Button
               onclick={() => selectedMedia && playMedia()}
-              color="blue"
+              color={color}
               className="px-1 py-0.5 mx-1 flex flex-row items-center text-xs sm:text-base"
             >
               <BiPlay className="text-xl sm:text-4xl" /> Reproducir

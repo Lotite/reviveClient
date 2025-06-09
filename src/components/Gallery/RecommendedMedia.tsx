@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import type { recommendedMedia, TmediaItem } from "../../utils/types"
 import GalleryItem from "./GalleryItem"
 import ServerApi from "../../services/ServerApi"
-import { randomInt } from "../../utils/functions"
+import { getLocaltionColor, randomInt } from "../../utils/functions"
 
 
 export default function RecommendedMedia({
@@ -40,7 +40,7 @@ export default function RecommendedMedia({
 
 
   return (
-    <div className={`overflow-hidden  ${showBorder ? "border-t border-background-medium pt-6  md:pt-8" : ""} ${className}`}>
+    <div className={`overflow-hidden pb-10  ${showBorder ? "border-t border-background-medium pt-6  md:pt-8" : ""} ${className}`}>
       <div className="flex items-center justify-between mb-4 md:mb-6">
         <h3 className="text-lg md:text-xl font-semibold text-white">{title}</h3>
         {currentMedia && (
@@ -53,7 +53,7 @@ export default function RecommendedMedia({
       {isLoading ? (
         <div className="flex items-center justify-center py-12">
           <div className="flex flex-col items-center gap-3">
-            <div className="w-8 h-8 border-3 border-main-blue border-t-transparent rounded-full animate-spin"></div>
+            <div className={`w-8 h-8 border-3 border-main-${getLocaltionColor()} border-t-transparent rounded-full animate-spin`}></div>
             <span className="text-text-medium text-sm">Cargando recomendaciones...</span>
           </div>
         </div>
@@ -68,18 +68,6 @@ export default function RecommendedMedia({
                 <GalleryItem media={media}  />
               </div>
             ))}
-          </div>
-
-          <div className="mt-6 p-4 mb-3 bg-background-medium/50 rounded-lg">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-              <p className="text-sm text-text-medium">
-                Mostrando {recommendedMedia.length} recomendaciones personalizadas
-              </p>
-              <div className="flex items-center gap-2">
-                <span className="text-xs text-text-medium">Actualizado hace</span>
-                <span className="text-xs text-main-blue font-medium">unos segundos</span>
-              </div>
-            </div>
           </div>
         </>
       )}

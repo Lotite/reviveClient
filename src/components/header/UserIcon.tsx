@@ -2,7 +2,7 @@ import { MdOutlineVideoLibrary } from "react-icons/md";
 import { useState, useRef, useEffect } from "react"
 import { FiSettings, FiLogOut } from "react-icons/fi"
 import ServerApi from "../../services/ServerApi"
-import { randomInt } from "../../utils/functions"
+import { getLocaltionColor } from "../../utils/functions"
 
 interface UserIconProps {
   webLocation: string
@@ -74,7 +74,7 @@ export default function UserIcon({ webLocation }: UserIconProps) {
   return (
     <div className={isMobile ? "absolute bottom-5" : "absolute right-0" } ref={dropdownRef}>
       <div
-        className={`w-10 h-10 text-2xl bg-background-${["blue","green","orange"][randomInt(0,2)]   } transition-colors duration-700 rounded-full flex items-center justify-center cursor-pointer ${
+        className={`w-10 h-10 text-2xl bg-background-${getLocaltionColor()}  } transition-colors duration-700 rounded-full flex items-center justify-center cursor-pointer ${
           isMobile ? "" : "-bottom-5 absolute right-0"
         }`}
         onClick={() => setIsOpen(!isOpen)}

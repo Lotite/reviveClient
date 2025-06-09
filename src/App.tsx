@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useEffect } from "react";
 import Header from "./components/header/Header";
-import DialogGallery from "./components/Gallery/dialogGallery"; 
+import DialogGallery from "./components/Gallery/dialogGallery";
 import Login from "./pages/auth/Login";
 import Recover from "./pages/auth/Recover/Recover";
 import P404 from "./pages/others/P404";
@@ -17,7 +17,10 @@ import { NotificationProvider } from "./contexts/NotificationContext";
 import NotificationContainer from "./components/Notification/NotificationContainer";
 import { ConfirmProvider } from "./contexts/ConfirmContext";
 import ConfirmDialog from "./components/Confirm/ConfirmDialog";
-import { DialogGalleryProvider, useDialogGallery } from "./contexts/DialogGalleryContext";
+import {
+  DialogGalleryProvider,
+  useDialogGallery,
+} from "./contexts/DialogGalleryContext";
 import { MediaPlayerProvider } from "./contexts/MediaPlayerContext";
 import RegisterPage from "./pages/auth/register";
 import MediaPlayer from "./components/MediaPlayer/MediaPlayer";
@@ -34,9 +37,8 @@ function DialogGalleryRenderer() {
   );
 }
 
-
 function App() {
-  const {  showLoading, hideLoading, setSessionValidated } = useLoading();
+  const { showLoading, hideLoading, setSessionValidated } = useLoading();
 
   useEffect(() => {
     redirect();
@@ -69,7 +71,11 @@ function App() {
   }
 
   function beingLogin(): boolean {
-    return location.pathname === "/login" || location.pathname === "/register" || location.pathname === "/recover";
+    return (
+      location.pathname === "/login" ||
+      location.pathname === "/register" ||
+      location.pathname === "/recover"
+    );
   }
 
   return (
@@ -85,15 +91,16 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/recover" element={<Recover />} />
           <Route path="/settings" element={<SettingsPage />} />
-          <Route path="/library" element={<Library/>}/>
+          <Route path="/library" element={<Library />} />
           <Route path="/*" element={<P404 />} />
         </Routes>
       </main>
-      <LoadingScreen />
+
       <ConfirmDialog />
       <DialogGalleryRenderer />
-     <MediaPlayer  />
-     <NotificationContainer />
+      <MediaPlayer />
+      <NotificationContainer />
+      <LoadingScreen />
     </>
   );
 }
@@ -107,7 +114,6 @@ export default function AppWrapper() {
             <DialogGalleryProvider>
               <MediaPlayerProvider>
                 <App />
-                 
               </MediaPlayerProvider>
             </DialogGalleryProvider>
           </ConfirmProvider>

@@ -66,9 +66,11 @@
 
 
 @theme{
-    --color-background-orange: #f97316;
-    --color-background-blue: #22d3ee;
-    --color-background-green: #64DD17;
+--color-background-orange: #f97c2d; /* naranja fuerte pero más suave que #ff6b00 */
+--color-background-blue: #33aadd;   /* azul brillante pero menos eléctrico que #00aaff */
+
+--color-background-green: #00cc66;  /* verde intenso, tipo esmeralda viva */
+
     --color-background-dark: #121827;
     --color-background-medium: #1f2937;
     --color-background-medium2: #374151;

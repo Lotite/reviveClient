@@ -6,7 +6,7 @@ import style from "./Carousel.module.css";
 import { Button } from "../baseComponents/Button/Button";
 import { TmediaItem } from "../../utils/types";
 import { useEffect, useState } from "react";
-import { getTypeColor, setBackgroundColor } from "../../utils/functions";
+import { getLocaltionColor, getTypeColor, randomInt, setBackgroundColor } from "../../utils/functions";
 import { useDialogGallery } from "../../contexts/DialogGalleryContext";
 
 export default function Carousel({ medias }: { medias: Array<TmediaItem> }) {
@@ -14,7 +14,7 @@ export default function Carousel({ medias }: { medias: Array<TmediaItem> }) {
   let intervalChange: number;
 
   const { openDialog } = useDialogGallery();
-  
+  const color = getLocaltionColor();
   useEffect(()=>{
     changePosition(1);
   },[medias])
@@ -48,6 +48,8 @@ export default function Carousel({ medias }: { medias: Array<TmediaItem> }) {
 
   function newImageContainer(media: TmediaItem, pos: number) {
     const color = getTypeColor(media.type);
+    const categorias = ["Tendencia", "Nuevo", "Lo mas nostalgico", "Popular", "Recomendado", "Visto recientemente"]
+    const categoria = categorias[randomInt(categorias.length)];
     return (
       <div
         key={pos}
@@ -71,7 +73,7 @@ export default function Carousel({ medias }: { medias: Array<TmediaItem> }) {
         ></div>
         <div style={{ position: "relative", zIndex: 2, padding: "1rem" }}>
           <span className={`bg-background-${color} mr-3 py-1 px-2 rounded`}>
-            Tendencia
+            {categoria}
           </span>
         </div>
         <h1
@@ -81,7 +83,7 @@ export default function Carousel({ medias }: { medias: Array<TmediaItem> }) {
           {media.title}
         </h1>
         <div className="flex" style={{ position: "relative", zIndex: 2 }}>
-          <AiFillStar className="text-text-orange text-xl" />
+          <AiFillStar className={`text-text-orange text-xl`} />
           <span className="px-1.5">{media.reseña}</span>
           <span className="text-text-medium px-1.5">
             {new Date(media?.date!).getFullYear()}
@@ -98,7 +100,7 @@ export default function Carousel({ medias }: { medias: Array<TmediaItem> }) {
       <Button
         key={pos}
         className={`${widthClass} transition-all h-2 rounded-full ${style.selector}`}
-        color={isActive ? "orange" : "medium2"}
+        color={isActive ? color : "medium2"}
         onclick={() => setImage(pos)}
       />
     );
@@ -136,7 +138,7 @@ export default function Carousel({ medias }: { medias: Array<TmediaItem> }) {
       <div className="absolute flex w-100 bottom-10 left-2">
        <Button
           className="flex w-40 items-center justify-center mx-2 px-1 py-1 sm:px-2 sm:py-2"
-          color="green"
+          color={color}
            onclick={() => {
             openDialog(medias[position]);
           }}

@@ -59,9 +59,9 @@ export default function IndexView({ requestRecomendation, requestCarousel }: Ind
         <div className="flex-1 min-w-[180px] mb-5">
           <h4 className="text-[#f97316] mb-4 text-lg">Navegación</h4>
           <ul className="list-none p-0">
-            <li className="mb-2"><a href="#home" className="text-[#ccc3cf] hover:text-[#fca25d] transition-colors duration-300">Home</a></li>
-            <li className="mb-2"><a href="#movies" className="text-[#ccc3cf] hover:text-[#fca25d] transition-colors duration-300">Películas</a></li>
-            <li className="mb-2"><a href="#series" className="text-[#ccc3cf] hover:text-[#fca25d] transition-colors duration-300">Series</a></li>
+            <li className="mb-2"><a href="#home" className="text-[#ccc3cf] hover:text-text-hover-green transition-colors duration-300">Home</a></li>
+            <li className="mb-2"><a href="#movies" className="text-[#ccc3cf] hover:text-text-hover-orange transition-colors duration-300">Películas</a></li>
+            <li className="mb-2"><a href="#series" className="text-[#ccc3cf] hover:text-text-hover-blue transition-colors duration-300">Series</a></li>
           </ul>
         </div>
         <div className="flex-1 min-w-[180px] mb-5">

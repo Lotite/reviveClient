@@ -79,11 +79,11 @@ export function validateInput(input: HTMLInputElement, type?: ToptionsInput): Va
 
 
 export function getLocaltionColor():"blue"|"green"|"orange"{
-  switch(location.href){
-    case "movies":
+  switch(location.pathname){
+    case "/movies":
       return "orange"
     break;
-    case "series":
+    case "/series":
     return "blue"
     break;
     default: return "green" ;
